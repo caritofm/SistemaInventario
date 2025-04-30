@@ -1,0 +1,51 @@
+.container-input{
+    display:flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+input{
+    border: 2px solid;
+    border-radius: 15px;
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    margin: 5px;
+}
+
+.form-select{
+    border: 2px solid;
+    border-radius:15px;
+    width:250px;
+    height: 30px;
+    text-align: center;
+    margin: 5px;
+    margin-left: 9px;
+}
+
+button{
+    border: 2px solid;
+    border-radius: 15px;
+    width:150px;
+    height: 30px;
+    background-color: #f9e79f !important;
+}
+
+.container-table{
+    display:flex;
+    justify-content: flex-end;
+    margin-top: -250px;
+
+}
+
+table{
+    
+}
+
+th{
+    border:2px solid;
+}
+
+td{
+    border: 2px solid
+}

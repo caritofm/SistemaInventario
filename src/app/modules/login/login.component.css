@@ -1,0 +1,81 @@
+.container-logo{
+    position: relative;
+    top:-25px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+
+
+img{
+   width:150px;
+   position: relative;
+   left: 90px;
+}
+
+h2{
+    text-align:center;
+    color: #2980B9;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+}
+.card{
+    border: 2px solid #2980B9;
+    border-radius: 15px;
+    width: 350px;
+    height: 400px;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.container-input{
+    display: flex;
+    flex-direction: column;
+    margin-top: -30px;
+    margin-right: 10px;
+    
+
+}
+
+input{
+    margin: 10px;
+    border-radius:15px;
+    width:300px;
+    height: 25px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+    
+}
+
+.container-button{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height:60px;
+}
+
+button{
+    border-radius: 15px;
+    border-color: #2980B9;
+    width: 100px;
+    height: 30px;
+    background-color: #2980B9;
+    color:white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container-a{
+    text-align: center;
+    position: relative;
+    top: -10px;
+}
+a{
+    color: #2980B9;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

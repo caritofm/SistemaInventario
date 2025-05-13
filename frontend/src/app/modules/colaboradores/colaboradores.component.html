@@ -10,6 +10,23 @@
         <div class="container-input">
             <mat-card appearance="outlined">
                 <h1>Agregar Colaborador</h1>
+                <label for="">Nombre:</label>
+                <input type="name">
+                <label for="">correo Electronico:</label>
+                <input type="email">
+                <label for="">N° celular:</label>
+                <input type="number">
+                <div class="cargo">
+                    <mat-form-field  class="custom-select"  appearance="outline">
+                        <mat-label>Cargo</mat-label>
+                        <mat-select >
+                          @for (cargo of cargos; track cargo) {
+                            <mat-option [value]="cargo.id_cargo">{{cargo.nombreCargo}}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+                <button>Guardar colaborador </button>
               </mat-card>
         </div>
     </div>

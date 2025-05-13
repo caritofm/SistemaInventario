@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    /*light theme*/
+    /*gama blue*/
+    --clr-marine:#005187;
+    --clr-blue-pastel:#4d82be;
+    --clr-light-blue:#84b6f4;
+    --clr-light-bluepas:#c4dafa;
+    --clr-white:#fcffff;
+
+}

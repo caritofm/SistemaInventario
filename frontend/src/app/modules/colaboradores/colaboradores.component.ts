@@ -4,8 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
-
+import {MatButtonModule} from '@angular/material/button';
 interface Cargo {
   id_cargo:number;
   nombreCargo:string
@@ -14,7 +13,7 @@ interface Cargo {
 @Component({
   selector: 'app-colaboradores',
   standalone: true,
-  imports: [MatCardModule, FormsModule, MatInputModule, MatSelectModule,MatFormFieldModule],
+  imports: [MatCardModule, MatButtonModule, FormsModule, MatInputModule, MatSelectModule,MatFormFieldModule],
   templateUrl: './colaboradores.component.html',
   styleUrl: './colaboradores.component.css'
 })

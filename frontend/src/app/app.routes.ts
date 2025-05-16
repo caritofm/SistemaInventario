@@ -27,13 +27,20 @@ export const routes: Routes = [
                     import('./modules/provedores/provedores.component').then(m => m.ProvedoresComponent),
             }
 
-        ]
+        ],
+       
     },
     {
         path:'login',
         loadComponent:() =>
             import('./modules/login/login.component').then(m => m.LoginComponent)
-    }
+    },
+
+     {
+            path:'venc-lotes',
+            loadComponent:() =>
+                import('./productos/venc-lotes/venc-lotes.component').then(m => m.VencLotesComponent),
+        },
    
     
 ];

@@ -7,8 +7,8 @@ import {MatButtonModule} from '@angular/material/button'
   selector: 'app-login',
   standalone: true,
   imports: [RouterModule, MatIcon,MatButtonModule, MatCardModule],
-  templateUrl: './principal.component.html',
-  styleUrls: ['./principal.component.css']
+  templateUrl: './provedores.component.html',
+  styleUrls: ['./provedores.component.css']
 })
 export class PrincipalComponent {
    

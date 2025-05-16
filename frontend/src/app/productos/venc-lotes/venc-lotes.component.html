@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <mat-table [dataSource]="lotes" class="mat-elevation-z2">
+
+  <!-- Código Lote -->
+  <ng-container matColumnDef="codigo">
+    <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
+    <mat-cell *matCellDef="let lote"> {{ lote.codigo }} </mat-cell>
+  </ng-container>
+
+  <!-- Descripción -->
+  <ng-container matColumnDef="descripcion">
+    <mat-header-cell *matHeaderCellDef> Descripción </mat-header-cell>
+    <mat-cell *matCellDef="let lote"> {{ lote.descripcion }} </mat-cell>
+  </ng-container>
+
+  <!-- Fecha Creación -->
+  <ng-container matColumnDef="fechaCreacion">
+    <mat-header-cell *matHeaderCellDef> Creación </mat-header-cell>
+    <mat-cell *matCellDef="let lote"> {{ lote.fechaCreacion | date }} </mat-cell>
+  </ng-container>
+
+  <!-- Fecha Vencimiento -->
+  <ng-container matColumnDef="fechaVencimiento">
+    <mat-header-cell *matHeaderCellDef> Vencimiento </mat-header-cell>
+    <mat-cell *matCellDef="let lote"> {{ lote.fechaVencimiento | date }} </mat-cell>
+  </ng-container>
+
+  <!-- Estado -->
+  <ng-container matColumnDef="estado">
+    <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+    <mat-cell *matCellDef="let lote">
+      <span [ngClass]="getEstadoClass(lote)">
+        {{ getEstadoTexto(lote) }}
+      </span>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Acciones -->
+  <ng-container matColumnDef="acciones">
+    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+    <mat-cell *matCellDef="let lote">
+      <button mat-icon-button color="primary" matTooltip="Ver detalle"><mat-icon>visibility</mat-icon></button>
+      <button mat-icon-button color="accent" matTooltip="Editar"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button color="warn" matTooltip="Eliminar"><mat-icon>delete</mat-icon></button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="isplayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: isplayedColumns;"></mat-row>
+
+</mat-table>
+
+    
+</body>
+</html>

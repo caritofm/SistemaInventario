@@ -6,6 +6,12 @@
 
 }
 
+.container-input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 mat-card {
     border-radius: 20px;
     width: 70%;
@@ -30,6 +36,7 @@ mat-card input{
   border: none;
   width: 50%;
   height: 40px;
+  text-align: center;
    
 }
 

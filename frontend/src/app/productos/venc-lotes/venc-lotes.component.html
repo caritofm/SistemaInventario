@@ -10,7 +10,7 @@
 
   <!-- Código Lote -->
   <ng-container matColumnDef="codigo">
-    <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
+    <mat-header-cell  *matHeaderCellDef> Código </mat-header-cell>
     <mat-cell *matCellDef="let lote"> {{ lote.codigo }} </mat-cell>
   </ng-container>
 
@@ -22,17 +22,17 @@
 
   <!-- Fecha Creación -->
   <ng-container matColumnDef="fechaCreacion">
-    <mat-header-cell *matHeaderCellDef> Creación </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef > Creación </mat-header-cell>
     <mat-cell *matCellDef="let lote"> {{ lote.fechaCreacion | date }} </mat-cell>
   </ng-container>
 
-  <!-- Fecha Vencimiento -->
+  
   <ng-container matColumnDef="fechaVencimiento">
     <mat-header-cell *matHeaderCellDef> Vencimiento </mat-header-cell>
     <mat-cell *matCellDef="let lote"> {{ lote.fechaVencimiento | date }} </mat-cell>
   </ng-container>
 
-  <!-- Estado -->
+ 
   <ng-container matColumnDef="estado">
     <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
     <mat-cell *matCellDef="let lote">
@@ -42,7 +42,6 @@
     </mat-cell>
   </ng-container>
 
-  <!-- Acciones -->
   <ng-container matColumnDef="acciones">
     <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
     <mat-cell *matCellDef="let lote">

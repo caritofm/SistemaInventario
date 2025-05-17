@@ -1,1 +1,47 @@
-<p>delete-product works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Productos</h1>
+        <div class="container-mas">
+            <button mat-icon-button color="warn" matTooltip="Agregar"><mat-icon>add</mat-icon></button>
+            <label for="">Agregar Producto</label>
+
+        </div>
+         <mat-table  [dataSource]="productos">
+            <ng-container matColumnDef="codigo">
+                <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
+                <mat-cell *matCellDef="let producto">{{producto.codigo}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="descripcion">
+                <mat-header-cell *matHeaderCellDef>descripcion</mat-header-cell>
+                <mat-cell *matCellDef="let producto">{{producto.descripcion}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="stock">
+                <mat-header-cell *matHeaderCellDef>stock</mat-header-cell>
+                <mat-cell *matCellDef="let producto">{{producto.stock}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="ubicacion">
+                <mat-header-cell *matHeaderCellDef>Ubicacion</mat-header-cell>
+                <mat-cell *matCellDef="let producto">{{producto.ubicacion}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+                <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                <mat-cell *matCellDef="let producto">
+                    <button mat-icon-button color="accent" matTooltip="Editar"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button color="warn" matTooltip="Eliminar"><mat-icon>delete</mat-icon></button>
+                </mat-cell>
+            </ng-container>
+            
+            <mat-header-row *matHeaderRowDef="isplayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: isplayedColumns;"></mat-row>
+
+         </mat-table>
+    </div>
+</body>
+</html>

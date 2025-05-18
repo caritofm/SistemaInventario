@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Productos</h1>
         <div class="container-mas">
-            <button mat-icon-button color="warn" matTooltip="Agregar"><mat-icon>add</mat-icon></button>
+            <button mat-icon-button color="warn" matTooltip="Agregar productos" routerLink="/add-product"><mat-icon>add</mat-icon></button>
             <label for="">Agregar Producto</label>
 
         </div>
@@ -19,11 +19,11 @@
                 <mat-cell *matCellDef="let producto">{{producto.codigo}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="descripcion">
-                <mat-header-cell *matHeaderCellDef>descripcion</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
                 <mat-cell *matCellDef="let producto">{{producto.descripcion}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="stock">
-                <mat-header-cell *matHeaderCellDef>stock</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef>Stock</mat-header-cell>
                 <mat-cell *matCellDef="let producto">{{producto.stock}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="ubicacion">
@@ -33,8 +33,8 @@
             <ng-container matColumnDef="acciones">
                 <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
                 <mat-cell *matCellDef="let producto">
-                    <button mat-icon-button color="accent" matTooltip="Editar"><mat-icon>edit</mat-icon></button>
-                    <button mat-icon-button color="warn" matTooltip="Eliminar"><mat-icon>delete</mat-icon></button>
+                    <button mat-icon-button color="accent" matTooltip="Editar" routerLink="/edit-product" ><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button color="warn" matTooltip="Eliminar" (click)="openDialog('0ms','0ms')"><mat-icon>delete</mat-icon></button>
                 </mat-cell>
             </ng-container>
             

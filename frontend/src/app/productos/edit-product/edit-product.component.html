@@ -1,1 +1,34 @@
-<p>edit-product works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <mat-card class="card-form">
+  <h2>Modificar Producto</h2>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="producto.nombre" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Descripción</mat-label>
+    <input matInput [(ngModel)]="producto.descripcion" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Stock</mat-label>
+    <input matInput type="number" [(ngModel)]="producto.stock" required>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="guardarCambios()">Guardar</button>
+</mat-card>
+
+
+    </div>
+</body>
+</html>

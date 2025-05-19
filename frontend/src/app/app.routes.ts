@@ -16,11 +16,7 @@ export const routes: Routes = [
                 loadComponent: () =>
                     import('./modules/colaboradores/colaboradores.component').then(m => m.ColaboradoresComponent),
             },
-            {
-                path:'productos',
-                loadComponent:() =>
-                    import('./modules/productos/productos.component').then(m => m.ProductosComponent),
-            },
+            
             {
                 path:'provedores',
                 loadComponent:()=>

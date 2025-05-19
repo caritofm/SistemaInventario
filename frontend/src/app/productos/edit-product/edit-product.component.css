@@ -1,10 +1,77 @@
-.card-form {
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 20px;
+body{
+    font-family: var(--font-family);
 }
 
-.form-field {
-  width: 100%;
-  margin-bottom: 15px;
+.container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    flex-direction: column;
+
+    
+}
+
+
+.container h2{
+    text-align: center !important;
+    width: 100%;
+    font-size: 3rem;
+    font-family: var(--font-family);
+    color: #5fa8d3;
+    margin-bottom: 40px;
+}
+
+.input{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+    margin: 30px auto 0;
+}
+
+.input label{
+    width: 120px;
+    font-weight: bold;
+    color: #5fa8d3;
+  
+}
+
+
+.input input{
+    flex: 1;
+    border-radius: 30px;
+    border: 2px solid #BEE9E8;
+    padding: 10px 15px;
+    font-size: 1rem;
+    width: 300px;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    text-align: center;
+   
+    
+  
+}
+
+:host ::placeholder{
+    font-family: var(--font-family);
+}
+
+button{
+    background-color: white;
+    font-family: var(--font-family);
+    width: 250px;
+    background-color: #5fa8d3;
+}
+
+.container button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 190px;
+    margin-top: 10px;
+    margin: 30px auto 0;
+   
+}
+mat-icon{
+    color: #5fa8d3;
 }

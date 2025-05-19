@@ -79,3 +79,70 @@
   :host ::ng-deep .mdc-list-item.active .mdc-list-item__primary-text {
     color: var(--color-text-inverse) !important;
   }
+  /* Panel principal (bloques por rol) */
+  :host ::ng-deep mat-expansion-panel{
+    background-color: var(--clr-light-blue);
+  }
+
+  mat-expansion-panel {
+    background-color: var(--clr-light-blue);
+   
+    margin: 0.5rem 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  /* Encabezado del panel */
+  mat-expansion-panel-header {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: var(--color-primary-darkest);
+    padding: 0 1rem;
+    min-height: unset Impo !important;
+  }
+
+  /* Ícono de flecha (expand/collapse) */
+  mat-expansion-panel-header .mat-expansion-indicator {
+    color: var(--color-primary-darkest);
+  }
+
+  /* Subitems */
+  mat-expansion-panel a.mat-list-item {
+    padding-left: 2.5rem;
+    font-size: 0.9rem;
+    min-height: 40px;
+    color: var(--color-text);
+  }
+
+  /* Subitems activos (resaltado) */
+  mat-expansion-panel a.mat-list-item.active,
+  mat-expansion-panel a.mat-list-item:hover {
+
+    border-radius: 20px;
+  }
+
+  /* Eliminar padding vertical innecesario */
+  mat-nav-list {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Footer (parte inferior del menú) */
+  .sidebar-footer a {
+    text-align: center;
+    padding: 12px 0;
+    font-size: 0.9rem;
+  }
+
+  a.mat-list-item {
+    display: flex !important;
+    align-items: center;
+    white-space: normal !important;   /* Permite saltos de línea */
+    overflow: visible !important;     /* Evita que se esconda contenido */
+    text-overflow: initial !important;
+    line-height: 1.4;
+    padding: 8px 16px;
+    word-break: break-word;
+  }
+  .submenu a{
+    white-space: normal !important;
+  }

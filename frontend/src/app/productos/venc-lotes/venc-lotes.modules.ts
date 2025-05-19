@@ -9,8 +9,38 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-venc-lotes',
   standalone: true,
-  imports: [MatTableModule, MatIcon, MatIconModule, MatButtonModule,MatTooltipModule, CommonModule],
+  imports: [MatTableModule, MatIcon,  MatIconModule, MatButtonModule,MatTooltipModule, CommonModule],
   templateUrl: './venc-lotes.component.html',
   styleUrls: ['./venc-lotes.component.css']
 })
-export class VencLotesComponent {}
+export class VencLotesComponent {
+
+  isplayedColumns: string[] = ['codigo', 'descripcion', 'fechaCreacion', 'fechaVencimiento', 'estado', 'acciones'];
+
+  lotes = [
+    { codigo: 'LOTE-2024-001', descripcion: 'Engranajes 100mm', fechaCreacion: new Date('2024-05-05'), fechaVencimiento: new Date('2024-07-05') },
+    { codigo: 'LOTE-2024-002', descripcion: 'Placas ASTM A36', fechaCreacion: new Date('2024-04-01'), fechaVencimiento: new Date('2024-06-30') },
+    { codigo: 'LOTE-2024-003', descripcion: 'Ejes hidráulicos', fechaCreacion: new Date('2024-03-10'), fechaVencimiento: new Date('2024-05-15') },
+  ];
+
+  getEstadoTexto(lote: any) {
+    const hoy = new Date();
+    if (hoy > lote.fechaVencimiento) return 'VENCIDO';
+    const diasAlerta = 15;
+    const fechaAlerta = new Date();
+    fechaAlerta.setDate(hoy.getDate() + diasAlerta);
+    if (lote.fechaVencimiento <= fechaAlerta) return 'PRÓXIMO A VENCER';
+    return 'ACTIVO';
+  }
+
+  getEstadoClass(lote: any) {
+    const hoy = new Date();
+    if (hoy > lote.fechaVencimiento) return 'estado-vencido';
+    const diasAlerta = 15;
+    const fechaAlerta = new Date();
+    fechaAlerta.setDate(hoy.getDate() + diasAlerta);
+    if (lote.fechaVencimiento <= fechaAlerta) return 'estado-proximo';
+    return 'estado-activo';
+  }
+
+}

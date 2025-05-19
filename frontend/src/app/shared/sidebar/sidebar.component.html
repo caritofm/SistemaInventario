@@ -1,16 +1,57 @@
 <mat-nav-list class="logo">
     <span class="brand-name">Maestranza</span>
   </mat-nav-list>
-  
   <mat-nav-list class="menu-items">
-    <a mat-list-item routerLink="/principal" routerLinkActive="active">Dashboard</a>
-    <a mat-list-item routerLink="/colaboradores" routerLinkActive="active">Agregar Colaborador</a>
-    <a mat-list-item routerLink="/productos" routerLinkActive="active">Registro de inventario</a>
-    <a mat-list-item routerLink="/analytics" routerLinkActive="active">Carrito de compras</a>
-    <a mat-list-item routerLink="/categories" routerLinkActive="active">Localizacion de productos</a>
-    <a mat-list-item routerLink="/upcoming-transactions" routerLinkActive="active">Informes</a>
-    <a mat-list-item routerLink="/provedores" routerLinkActive="active">Provedores</a>
+    <mat-expansion-panel class="submenu">
+      <mat-expansion-panel-header>
+      <mat-panel-title>Gestión de productos</mat-panel-title>
+    </mat-expansion-panel-header>
+    <a mat-list-item routerLink="/add-product" routerLinkActive="active">Agregra Producto</a>
+    <a mat-list-item routerLink="/add-product" routerLinkActive="active">Eliminar Producto</a>
+    <a mat-list-item routerLink="/add-product" routerLinkActive="active">Modificar Producto</a>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Admin</mat-panel-title>
+        
+
+      </mat-expansion-panel-header>
+      <a mat-list-item routerLink="/principal" routerLinkActive="active">Dashboard</a>
+      <a mat-list-item routerLink="/colaboradores" routerLinkActive="active">Agregar Colaborador</a>
+    </mat-expansion-panel>
+      <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Comprador</mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <a mat-list-item routerLink="/analytics" routerLinkActive="active">Carrito de compras</a>
+      <a mat-list-item routerLink="/categories" routerLinkActive="active">Localizacion de productos</a>
+      <a mat-list-item routerLink="/compras" routerLinkActive="active">Compras</a>
+      <a mat-list-item routerLink="/review-compras" routerLinkActive="active">Historial de compras</a>
+      <a mat-list-item routerLink="/provedores" routerLinkActive="active">Registrar proovedores</a>
+      <a mat-list-item routerLink="/compras" routerLinkActive="active">Carrito</a>
+    </mat-expansion-panel>
+     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Jefe de produccion</mat-panel-title>
+      </mat-expansion-panel-header>
+      <a mat-list-item routerLink="/delete-product" routerLinkActive="active">Control de suministro de energia</a> 
+      <a mat-list-item routerLink="/delete-product" routerLinkActive="active">Programar produccion</a> 
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Auditor</mat-panel-title>
+      </mat-expansion-panel-header>
+      <a mat-list-item routerLink="/delete-product" routerLinkActive="active">Infomes</a> 
+     
+    </mat-expansion-panel>
+
+
   </mat-nav-list>
+  
+ 
+
   
   <mat-nav-list class="sidebar-footer">
     <a mat-list-item routerLink="/config">Configuraciones</a>

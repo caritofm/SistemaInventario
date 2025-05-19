@@ -7,26 +7,37 @@
 </head>
 <body>
     <div class="container">
-        <mat-card class="card-form">
-  <h2>Modificar Producto</h2>
-
-  <mat-form-field appearance="fill" class="form-field">
-    <mat-label>Nombre</mat-label>
-    <input matInput [(ngModel)]="producto.nombre" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" class="form-field">
-    <mat-label>Descripción</mat-label>
-    <input matInput [(ngModel)]="producto.descripcion" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" class="form-field">
-    <mat-label>Stock</mat-label>
-    <input matInput type="number" [(ngModel)]="producto.stock" required>
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" (click)="guardarCambios()">Guardar</button>
-</mat-card>
+      
+            <h2>Modificar Producto</h2>
+            <!-- modificar-producto.component.html -->
+            <div class="input">
+                <label>Código</label>
+                <input type="text" [(ngModel)]="producto.codigo">
+                <mat-icon>edit</mat-icon>
+            </div>
+             <div class="input">
+                <label>Nombre</label>
+                <input type="text" [(ngModel)]="producto.nombre">
+                 <mat-icon>edit</mat-icon>
+            </div>
+             <div class="input">
+                <label>Descripcion</label>
+                <input type="text" class="input-chico" [(ngModel)]="producto.descripcion">
+                 <mat-icon>edit</mat-icon>
+            </div>
+             <div class="input">
+                <label>Stock</label>
+                <input type="text" [(ngModel)]="producto.stock"> 
+                <mat-icon>edit</mat-icon>
+            </div>
+             <div class="input">
+                <label>Código</label>
+                <input type="text" [(ngModel)]="producto.Ubicacion">
+                 <mat-icon>edit</mat-icon>
+            </div>
+            <button  mat-button color="primary" style="color: black;">Guardar Cambios</button>
+        
+  
 
 
     </div>

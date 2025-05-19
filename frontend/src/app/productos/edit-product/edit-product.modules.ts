@@ -1,21 +1,29 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIcon, MatIconModule,  } from '@angular/material/icon';
+
+
+
+
+
+
+
 @Component({
   selector: 'app-edit-product',
   standalone: true,
-  imports: [FormsModule,MatIcon, MatIconModule, CommonModule, MatCardModule,MatInputModule,
-    MatButtonModule,
+  imports: [FormsModule, CommonModule,MatCardModule,MatInputModule
+    , MatButtonModule, MatIconModule, MatIcon
   ],
   templateUrl: './edit-product.component.html',
-  styleUrl: './edit-product.component.css'
+  styleUrls: ['./edit-product.component.css']
 })
-export class EditProductComponent {
-  producto = {
+
+export class EditProductComponent{
+    producto = {
     codigo: 'A8889',
     nombre: 'Fierros',
     descripcion: 'Fierros para construcción',
@@ -27,5 +35,4 @@ export class EditProductComponent {
     console.log('Producto modificado:', this.producto);
     // Aquí puedes llamar a tu servicio para enviar los cambios al backend
   }
-
 }

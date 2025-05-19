@@ -22,6 +22,12 @@ h2{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
    
 }
+.card-form, .container {
+  background-color: rgba(255, 255, 255, 0.9); /* blanco semi-transparente */
+  border-radius: 30px;
+  padding: 50px;
+  overflow: hidden;
+}
 
 .input input{
     border-radius: 30px;

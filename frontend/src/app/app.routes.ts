@@ -25,18 +25,8 @@ export const routes: Routes = [
                 path:'provedores',
                 loadComponent:()=>
                     import('./modules/provedores/provedores.component').then(m => m.ProvedoresComponent),
-            }
-
-        ],
-       
-    },
-    {
-        path:'login',
-        loadComponent:() =>
-            import('./modules/login/login.component').then(m => m.LoginComponent)
-    },
-
-     {
+            },
+             {
             path:'venc-lotes',
             loadComponent:() =>
                 import('./productos/venc-lotes/venc-lotes.component').then(m => m.VencLotesComponent),
@@ -61,6 +51,17 @@ export const routes: Routes = [
             loadComponent:() => 
                 import('./productos/alert-stock/alert-stock.component').then(m =>m.AlertStockComponent),
         }
+
+        ],
+       
+    },
+    {
+        path:'login',
+        loadComponent:() =>
+            import('./modules/login/login.component').then(m => m.LoginComponent)
+    },
+
+    
    
     
 ];

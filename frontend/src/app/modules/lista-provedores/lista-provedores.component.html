@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Lista de Provedores</h2>
+        <mat-table [dataSource]="dataProvedores" class="mat-elevation-z8">
+
+  <!-- Código -->
+            <ng-container matColumnDef="codigo">
+                <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
+                <mat-cell *matCellDef="let provedor"> {{provedor.codigo}} </mat-cell>
+            </ng-container>
+
+        <!-- Razón Social -->
+        <ng-container matColumnDef="RazonSocial">
+            <mat-header-cell *matHeaderCellDef> Razón Social </mat-header-cell>
+            <mat-cell *matCellDef="let provedor"> {{provedor.RazonSocial}} </mat-cell>
+        </ng-container>
+
+        <!-- RUT -->
+        <ng-container matColumnDef="rut">
+            <mat-header-cell *matHeaderCellDef> RUT </mat-header-cell>
+            <mat-cell *matCellDef="let provedor"> {{provedor.rut}} </mat-cell>
+        </ng-container>
+
+        <!-- Teléfono -->
+        <ng-container matColumnDef="telefono">
+            <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
+            <mat-cell *matCellDef="let provedor"> {{provedor.telefono}} </mat-cell>
+        </ng-container>
+
+        <!-- Dirección Legal -->
+        <ng-container matColumnDef="direccionLegal">
+            <mat-header-cell *matHeaderCellDef> Dirección Legal </mat-header-cell>
+            <mat-cell *matCellDef="let provedor"> {{provedor.direccionLegal}} </mat-cell>
+        </ng-container>
+
+        <!-- Nombre Contacto -->
+        <ng-container matColumnDef="nombreContacto">
+            <mat-header-cell *matHeaderCellDef> Contacto </mat-header-cell>
+            <mat-cell *matCellDef="let provedor"> {{provedor.nombreContacto}} </mat-cell>
+        </ng-container>
+
+        <!-- Teléfono Contacto -->
+        <ng-container matColumnDef="telefonoContacto">
+            <mat-header-cell *matHeaderCellDef> Teléfono Contacto </mat-header-cell>
+            <mat-cell *matCellDef="let provedor"> {{provedor.telefonoContacto}} </mat-cell>
+        </ng-container>
+
+        <!-- Encabezado y filas -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+
+    </div>
+</body>
+</html>

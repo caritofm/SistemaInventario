@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Historial de compra</h2>
+        <mat-table [dataSource]="compra">
+            <ng-container matColumnDef="Fecha">
+                <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+                <mat-cell *matCellDef="let compras">{{compras.Fecha}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Proveedor">
+                <mat-header-cell *matHeaderCellDef>Proveedor</mat-header-cell>
+                <mat-cell *matCellDef="let compras">{{compras.Proveedor}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Total">
+                <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
+                <mat-cell *matCellDef="let compras">{{compras.Total}}</mat-cell>
+            </ng-container>
+             <ng-container matColumnDef="Verdetalles">
+                <mat-header-cell *matHeaderCellDef>Ver Detalles</mat-header-cell>
+                <mat-cell *matCellDef="let compras">
+                    <button mat-icon-button color="accent" matTooltip="Editar"  ><mat-icon>visibility</mat-icon></button>
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="isPlayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: isPlayedColumns;"></mat-row>
+
+        </mat-table>
+    </div>
+    
+</body>
+</html>

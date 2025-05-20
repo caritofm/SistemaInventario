@@ -37,11 +37,16 @@ export const routes: Routes = [
                 loadComponent:() =>
                     import('./carrito/solicitud-compra/solicitud-compra.component').then(m =>m.SolicitudCompraComponent),
             },
-             {
+            {
+                path:'historial-compra',
+                loadComponent:() =>
+                    import('./carrito/historial-compra/historial-compra.component').then(m => m.HistorialCompraComponent),
+            },
+            {
             path:'venc-lotes',
             loadComponent:() =>
                 import('./productos/venc-lotes/venc-lotes.component').then(m => m.VencLotesComponent),
-        },
+            },
         {
             path:'add-product',
             loadComponent:() =>

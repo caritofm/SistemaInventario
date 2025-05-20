@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-lista-provedores',
   standalone: true,
-  imports: [MatTableModule, CommonModule],
+  imports: [MatTableModule, CommonModule, RouterModule],
   templateUrl: './lista-provedores.component.html',
   styleUrl: './lista-provedores.component.css'
 })

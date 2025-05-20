@@ -24,7 +24,7 @@
              <ng-container matColumnDef="Verdetalles">
                 <mat-header-cell *matHeaderCellDef>Ver Detalles</mat-header-cell>
                 <mat-cell *matCellDef="let compras">
-                    <button mat-icon-button color="accent" matTooltip="Editar"  ><mat-icon>visibility</mat-icon></button>
+                    <button mat-icon-button color="accent" matTooltip="Editar" (click)="openDialog(compras)"  ><mat-icon>visibility</mat-icon></button>
                 </mat-cell>
             </ng-container>
 

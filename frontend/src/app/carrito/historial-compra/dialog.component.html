@@ -1,0 +1,30 @@
+<h3>Detalle de Compra</h3>
+
+<mat-dialog-content>
+  <p><strong>Fecha:</strong> {{ data.Fecha }}</p>
+  <p><strong>Proveedor:</strong> {{ data.Proveedor }}</p>
+  <p><strong>Total:</strong> {{ data.Total }}</p>
+
+  <h3>Productos Comprados</h3>
+  <table class="productos-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <td>Acero</td>
+        <td>$10.000</td>
+        <td>$15.990</td>
+      </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>
+

@@ -1,0 +1,32 @@
+.productos-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.productos-table th,
+.productos-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  font-family: var(--font-family);
+}
+
+.productos-table th {
+  background-color: var(--clr-light-bluepas);
+  font-family: var(--font-family) !important;
+}
+
+h3{
+    font-family: var(--font-family);
+    text-align: center;
+    margin-top: 10px;
+}
+
+p, strong{
+    font-family: var(--font-family);
+}
+
+mat-content{
+    background-color: var(--clr-blue-light) !important;
+}

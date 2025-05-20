@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Solicitud de compra 
+                </mat-card-title>
+                <div class="form">
+                    <div class="form-group">
+                        <label for="">Nombre Solicitante</label>
+                    <input type="text" placeholder="Ingrese su nombre">
+                    <label for="">Fecha de solicitud</label>
+                    <input type="date" class="form-date">
+                    <label for="">Prioridad</label>
+                    <select class="form-select" >
+                    <option selected>Ingrese la prioridad</option>
+                        <option value="1">Baja</option>
+                        <option value="2">Media </option>
+                        <option value="3">Alta</option>
+                    </select>
+                    <label for="">Materiales</label>
+                    <input type="text" placeholder="Ingrese los materiales que solicita">
+                    <label for="">Comentarios</label>
+                    <textarea matInput  name="" id="" placeholder="Ingresa comentarios "></textarea>
+                    <div class="buttons">
+                        <button mat-button>Enviar Solicitud</button>
+
+                    </div>
+
+                 </div>
+
+                    </div>
+                    
+
+            </mat-card-content>
+        </mat-card>
+        
+    </div>
+
+</body>
+</html>

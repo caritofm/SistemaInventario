@@ -22,6 +22,21 @@ export const routes: Routes = [
                 loadComponent:()=>
                     import('./modules/provedores/provedores.component').then(m => m.ProvedoresComponent),
             },
+            {
+                path:'lista-provedores',
+                loadComponent:() =>
+                    import('./modules/lista-provedores/lista-provedores.component').then(m => m.ListaProvedoresComponent),
+            },
+            {
+                path:'send-cotizacion',
+                loadComponent:() =>
+                    import('./carrito/send-cotizacion/send-cotizacion.component').then(m => m.SendCotizacionComponent),
+            },
+            {
+                path:'solicitud-compra',
+                loadComponent:() =>
+                    import('./carrito/solicitud-compra/solicitud-compra.component').then(m =>m.SolicitudCompraComponent),
+            },
              {
             path:'venc-lotes',
             loadComponent:() =>

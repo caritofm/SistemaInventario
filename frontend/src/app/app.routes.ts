@@ -47,35 +47,51 @@ export const routes: Routes = [
             loadComponent:() =>
                 import('./productos/venc-lotes/venc-lotes.component').then(m => m.VencLotesComponent),
             },
-        {
-            path:'add-product',
-            loadComponent:() =>
-                import('./productos/add-product/add-product.component').then(m =>m.AddProductComponent),       
-        },
-        {
-            path:'delete-product',
-            loadComponent:() =>
-                import('./productos/delete-product/delete-product.component').then(m => m.DeleteProductComponent),
-        },
-        {
-            path:'edit-product',
-            loadComponent:() =>
-                import('./productos/edit-product/edit-product.component').then(m=>m.EditProductComponent),
-        },
-        {
-            path:'alert-stock',
-            loadComponent:() => 
-                import('./productos/alert-stock/alert-stock.component').then(m =>m.AlertStockComponent),
-        }
+            {
+                path:'add-product',
+                loadComponent:() =>
+                    import('./productos/add-product/add-product.component').then(m =>m.AddProductComponent),       
+            },
+            {
+                path:'delete-product',
+                loadComponent:() =>
+                    import('./productos/delete-product/delete-product.component').then(m => m.DeleteProductComponent),
+            },
+            {
+                path:'edit-product',
+                loadComponent:() =>
+                    import('./productos/edit-product/edit-product.component').then(m=>m.EditProductComponent),
+            },
+            {
+                path:'alert-stock',
+                loadComponent:() => 
+                    import('./productos/alert-stock/alert-stock.component').then(m =>m.AlertStockComponent),
+            },
+            {
+                path:'control-energia',
+                loadComponent:() =>
+                    import('./modules/control-energia/control-energia.component').then(m => m.ControlEnergiaComponent),
+            },
+            {
+                path:'informe',
+                loadComponent:() =>
+                    import('./modules/informe/informe.component').then(m => m.InformeComponent),
+            },
+            {
+                path:'produccion-embalaje',
+                loadComponent:() =>
+                    import('./modules/produccion-embalaje/produccion-embalaje.component').then(m => m.ProduccionEmbalajeComponent),
+            }
 
         ],
-       
     },
+       
+    
     {
         path:'login',
         loadComponent:() =>
             import('./modules/login/login.component').then(m => m.LoginComponent)
-    },
+    }
 
     
    

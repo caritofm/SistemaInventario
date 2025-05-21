@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="p-4">
+        <h3>Control de Energia</h3>
+        <p><strong>Consumo Total:</strong>{{consumoTotalKwh}}</p>
+        <table border="1" cellPadding="8" [cellSpacing]="0" class="tabla-redonda">
+            <thead>
+                <tr>
+                    <th>Equipo</th>
+                    <th>Consumo (KWh)</th>
+                    <th>Estados</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let eq of equipos ; let i = index">
+                    <td>{{eq.nombre}}</td>
+                    <td [style.color]="getColor(eq.consumo)">{{eq.consumo}}</td>
+                    <td [style.color]="eq.encendido ? 'green' : 'gray'">
+                        {{eq.encendido ? 'Encendido' : 'Apagado'}}
+                        
+                    </td>
+                    <td>
+                        <button mat-button (click)="toggleEquipo(i)">
+                            {{eq.encendido ? 'Apagar' : 'Encender'}}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+    
+</body>
+</html>

@@ -81,6 +81,11 @@ export const routes: Routes = [
                 path:'produccion-embalaje',
                 loadComponent:() =>
                     import('./modules/produccion-embalaje/produccion-embalaje.component').then(m => m.ProduccionEmbalajeComponent),
+            },
+            {
+                path:'programar-embalaje',
+                loadComponent:() =>
+                    import('./modules/programar-embalaje/programar-embalaje.component').then(m => m.ProgramarEmbalajeComponent),
             }
 
         ],

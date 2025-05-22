@@ -19,6 +19,15 @@
 
 }
 
+.estado-proceso{
+    background-color: #cce5ff !important;
+    color: #004085 !important;
+    padding: 4px 10px !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+
+}
 
 
 

@@ -1,0 +1,67 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+mat-card{
+    width: 40%;
+}
+h3{
+    font-family: var(--font-family);
+    font-weight: bold;
+    color: var(--clr-blue-dark);
+    text-align: center;
+}
+
+input{
+    width: 80%;
+    border-radius: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: var(--clr-blue-blue);
+    color: white;
+}
+
+:host ::placeholder{
+    font-family: var(--font-family);
+    color: white;
+}
+
+select{
+    width: 80%;
+    border-radius: 30px;
+    height: 30px;
+    background-color: var(--clr-blue-blue);
+    color: white;
+    text-align: center;
+    font-family: var(--font-family);
+}
+
+label{
+    font-family: var(--font-family);
+
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.button{
+    width: 200px;
+    height: 30px !important;
+    border: 2px solid var(--clr-blue-blue);
+    font-family: var(--font-family);
+    color: var(--clr-blue-blue) !important;
+}
+
+.button:hover{
+    background-color: var(--clr-blue-blue);
+    color: white !important;
+}

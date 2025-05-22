@@ -1,1 +1,41 @@
-<p>produccion-embalaje works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="tabla-container">
+        <h1>Programacion de produccion de embalaje</h1>
+        <table class="tabla-embalajes">
+            <thead>
+                <tr>
+                    <th >Producto</th>
+                    <th >Cantidad</th>
+                    <th >Fecha Programada</th>
+                    <th >Estado</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of embalajes" class="border-t">
+                    <td >{{item.producto}}</td>
+                    <td >{{item.cantidad}}</td>
+                    <td >{{item.fechaProgramada | date: 'mediumDate' }}</td>
+                    <td >
+                        <span [ngClass]="{
+                                'estado-pendiente': item.estado === 'Pendiente',
+                                'estado-proceso': item.estado === 'Proceso',
+                                'estado-finalizado': item.estado === 'Finalizado'
+                        }">
+                        {{ item.estado }}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

@@ -1,9 +1,10 @@
-const admin =require('firebase-admin');
-const serviceAccount = require('./firebase-key.json');
+const mongoose = require('mongoose');
+const productoSchema = new mongoose.Schema({
+    nombre :{type:String, required:true},
+    categoria: {type:String, required:true},
+    stock:{type:Number, required:true, default:0},
+    ubicacion:{type:String, required:true}
+})
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
 
-const db = admin.firestore();
-module.exports = db;
+module.exports = mongoose.model('Productos', productoSchema);

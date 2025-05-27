@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,33 +15,49 @@ import {
 } from '@angular/material/dialog';
 import { DialogComponent } from './delete-product.component';
 
+import { ServicesBDService } from '../../services/services-bd.service';
+import { Producto } from '../../interface/producto';
+
 
 @Component({
   selector: 'app-venc-lotes',
   standalone: true,
-  imports: [MatTableModule,DialogComponent, MatIcon, MatIconModule, MatButtonModule,MatTooltipModule, CommonModule, MatDialogActions,
+  imports: [MatTableModule, MatIcon, MatIconModule, MatButtonModule,MatTooltipModule, CommonModule, MatDialogActions,
   MatDialogClose,
   MatDialogContent,
   MatDialogTitle, MatDialogModule],
   templateUrl: './delete-product.component.html',
   styleUrls: ['./delete-product.component.css']
 })
-export class DeleteProductComponent {
+export class DeleteProductComponent implements OnInit {
+
+  productos: Producto[] = []
+
+  constructor(private servicebd: ServicesBDService){}
+
+  ngOnInit(): void {
+    this.servicebd.getProductos().subscribe((data) =>{
+      this.productos = data;
+    })
+    
+  }
+
+  
+  eliminarProducto(id: string) {
+  this.servicebd.deleteProducto(id).subscribe({
+    next: () => {
+      this.productos = this.productos.filter(p => p._id !== id); // ✅ operador corregido
+    },
+    error: err => {
+      console.error('Error al eliminar producto', err);
+      alert('No se pudo eliminar este');
+    }
+  });
+}
 
 
-     isplayedColumns: string[] = ['codigo', 'descripcion', 'stock', 'ubicacion', 'acciones'];
+     isplayedColumns: string[] = ['codigo', 'descripcion','categoria', 'stock', 'ubicacion','Imagen', 'acciones'];
 
-  productos = [
-    {
-      codigo: 'A23490', descripcion: 'Fierros', stock:'200', ubicacion:'Bodega A Fila 200'
-    },
-     {
-      codigo: 'A23490', descripcion: 'Fierros', stock:'200', ubicacion:'Bodega A Fila 200'
-    },
-     {
-      codigo: 'A23490', descripcion: 'Fierros', stock:'200', ubicacion:'Bodega A Fila 200'
-    },
-  ]
 
   readonly dialog = inject(MatDialog);
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {

@@ -6,30 +6,101 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <mat-card style="border-radius: 30px;">
-            <mat-card-content>
-                <div class="titulo">
-                    <h2>Agregar Productos</h2>
+     <div class="container">
+        <div class="card">
+            <div class="titulo">
+                <h2>Agregar Productos</h2>
+            </div>
+            
+            <form>
+                <div class="form-field">
+                    <label for="codigo">Código:</label>
+                    <input 
+                        type="text" 
+                        id="codigo"
+                        placeholder="Ingrese el código del producto" 
+                        [(ngModel)]="nuevoProducto.codigo"
+                        name="codigo"
+                        required>
+                </div>
 
+                <div class="form-field">
+                    <label for="descripcion">Descripción:</label>
+                    <input 
+                        type="text" 
+                        id="descripcion"
+                        placeholder="Ingrese una breve descripción del producto" 
+                        [(ngModel)]="nuevoProducto.nombre" 
+                        name="nombre" 
+                        required>
                 </div>
-                <div class="input">
-                    <label for="">Codigo:</label>
-                    <input type="text" placeholder="Ingrese el codigo del producto" [(ngModel)]="codigo"required >
-                    <label for="">Descripcion:</label>
-                    <input type="text"    placeholder="Ingrese una breve descripcion del producto" [(ngModel)]="descripcion" required>
-                    <label for="">Stock:</label>
-                    <input type="number" placeholder="Ingrese el stock del producto" [(ngModel)]="stock"required>
-                    <label for="">Ubicacion del producto:</label>
-                    <input type="text" placeholder="Ingrese la ubicacion del producto" [(ngModel)]="ubicacion" required>
+
+                <div class="form-field">
+                    <label for="categoria">Categoría:</label>
+                    <input 
+                        type="text" 
+                        id="categoria"
+                        placeholder="Ingrese la categoría del producto" 
+                        [(ngModel)]="nuevoProducto.categoria" 
+                        name="categoria" 
+                        required>
                 </div>
+
+                <div class="form-field">
+                    <label for="stock">Stock:</label>
+                    <input 
+                        type="number" 
+                        id="stock"
+                        placeholder="Ingrese el stock del producto" 
+                        [(ngModel)]="nuevoProducto.stock"
+                        name="stock"
+                        min="0"
+                        required>
+                </div>
+
+                <div class="form-field">
+                    <label for="ubicacion">Ubicación del producto:</label>
+                    <input 
+                        type="text" 
+                        id="ubicacion"
+                        placeholder="Ingrese la ubicación del producto" 
+                        [(ngModel)]="nuevoProducto.ubicacion"
+                        name="ubicacion" 
+                        required>
+                </div>
+
+                <div class="form-image">
+                    <label>Imagen del producto:</label>
+                    <div class="file-input-wrapper">
+                        <input 
+                            type="file" 
+                            id="foto" 
+                            (change)="onFileSelected($event)" 
+                            accept="image/*" 
+                            class="file-input">
+                        <div class="file-input-button">
+                            <i class="material-icons">cloud_upload</i>
+                            Seleccionar imagen
+                        </div>
+                    </div>
+                    
+                    <!-- Vista previa de la imagen -->
+                    <div class="image-preview" *ngIf="imagePreview">
+                        <img [src]="imagePreview" alt="Vista previa del producto">
+                    </div>
+                </div>
+
                 <div class="buttons">
-                    <button mat-fab  (click)="guadarProducto()">Agregar Producto</button>
+                    <button 
+                        type="button"
+                        class="add-button"
+                        (click)="agregarProducto()">
+                        <i class="material-icons">add</i>
+                        Agregar Producto
+                    </button>
                 </div>
-
-            </mat-card-content>
-        </mat-card>
-        
+            </form>
+        </div>
     </div>
 </body>
 </html>

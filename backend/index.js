@@ -12,7 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Conexión a MongoDB
-mongoose.connect('mongodb+srv://carolfloresm:0VBajr2eLL8CacgJ@cluster0.hgmgeel.mongodb.net/inventario?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://carolfloresm:0VBajr2eLL8CacgJ@cluster0.hgmgeel.mongodb.net/inventario?retryWrites=true&w=majority&appName=Cluster0',{
+  useNewUrlParser:true,
+  useUnifiedTopology:true
+})
   .then(async () => {
     console.log('✅ Conectado a MongoDB Atlas');
 

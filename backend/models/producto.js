@@ -3,10 +3,17 @@ const mongoose = require('mongoose');
 const productoSchema = new mongoose.Schema({
     codigo: {type:String, required:true},
     nombre:{type:String, required:true},
-    categoria :{type:String, required:true},
+    categoria: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Categoria',
+        required:true },
     stock :{type:Number, required:true, default:0},
-    ubicacion:{type: String, required:true},
-    foto: {data:Buffer, contentType:String}
+    stockmin:{type:Number,  default:50},
+    ubicacion:{type: mongoose.Schema.Types.ObjectId,
+        ref:'Ubicacion',
+        required:true
+    },
+    foto: {type:String}
 
 },{
     timestamps: true

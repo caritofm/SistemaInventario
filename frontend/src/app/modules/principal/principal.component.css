@@ -1,64 +1,63 @@
-.container-card {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  
+
+.dashboard-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--clr-blue-blue);
+  font-family: var(--font-family);
+  font-weight: bold;
+}
+
+
+
+
+.dashboard{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  margin-top: auto;
+  margin: 20px;
+}
+
+.dashboard .icon {
+  font-size: 3rem; /* Puedes subirlo a 3rem si quieres más grande */
+  width: 150px;
+  height: 40px;
+  color: var(--clr-marine);
+}
+
+.dashboard-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .card {
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-right: 20px;
-  cursor: pointer;
-  border-radius: 30px;
-  background: linear-gradient(to right, var(--clr-light-blue), var(--clr-blue-pastel));
-}
-
-mat-icon{
-    color: white;
-
-}
-
-.titulo {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  text-align: center;
-  color: white;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.notifications-panel {
-  background: #f9f9f9;
+  width: 180px;
+  height: 140px;
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: 0.2s;
 }
 
-.notification {
-  margin-bottom: 1rem;
+.card i {
+  font-size: 30px;
+  margin-bottom: 0.5rem;
 }
 
-h2{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: center;
+.card.yellow { background-color: #f1c40f; }
+.card.green  { background-color: #2ecc71; }
+.card.red    { background-color: #e74c3c; }
+
+.card:hover {
+  transform: scale(1.05);
 }
-.text{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-.card-action{
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: end;
-}
-.card-action button{
-    background: linear-gradient(to right, var(--clr-light-blue), var(--clr-blue-pastel));
-    border: none;
-    cursor: pointer;
-    margin-top: -25px;
-    
-}
+

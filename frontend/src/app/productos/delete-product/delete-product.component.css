@@ -14,20 +14,61 @@ body{
 }
 
 .container-mas mat-icon{
-    color: crimson;
+    color: var(--clr-blue-blue);
+}
+
+mat-table {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: var(--font-family);
+}
+
+
+
+mat-row:hover{
+    background-color: var(--clr-blue-light) !important;
 }
 
 :host ::ng-deep mat-header-cell {
-    background-color: crimson !important;
+    background-color: var(--clr-blue-blue)!important;
     color: white;
     font-family:'Poppins', sans-serif ;
 }
 
+
+:host ::ng-deep mat-cell{
+    font-family: var(--font-family);
+}
+
 h1{
     font-family: 'Poppins' ,sans-serif;
-    color: crimson;
+    color: var(--clr-blue-marine);
     text-align: center;
+    margin-top: auto;
+    font-weight: bold;
 }
+
+.buscador{
+      display: block;
+  margin-left: auto;
+  width: fit-content; /* Para que no ocupe todo el ancho */
+}
+
+.input{
+    width: 300px;
+    height: 30px;
+    border-radius: 20px;
+    border: 3px solid var(--clr-blue-blue);
+    text-align: center;
+    font-family: var(--font-family);
+    font-weight: bold;
+
+
+}
+
+
 
 
 

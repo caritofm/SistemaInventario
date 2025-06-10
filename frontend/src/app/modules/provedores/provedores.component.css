@@ -72,7 +72,12 @@ input[type="text"] {
   border-radius: 20px;
   border: 1px solid #ccc;
 }
-.button-container {
+input[type="email"] {
+  padding: 0.5rem;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+.buttons {
   display: flex;
   justify-content: center; /* Centrado */
   margin-top: 2rem;
@@ -81,7 +86,7 @@ input[type="text"] {
 .btn-guardar {
   padding: 10px 30px;
   font-family: var(--font-family);
-  color: white;
+  color: black;
   border: 2px solid #1b4965;
   border-radius: 20px;
   font-weight: bold;
@@ -93,6 +98,18 @@ input[type="text"] {
 .btn-guardar:hover {
   background-color: #62b6cb;
   color: white;
+  font-family: var(--font-family);
+}
+
+select{
+  border: 2px solid var(--clr-blue-blue);
+  background-color: var(--clr-blue-blue);
+  border-radius: 20px;
+  color: white !important;
+  width: 350px;
+  height: 40px;
+  padding: 0.5rem;
+  text-align: center;
   font-family: var(--font-family);
 }
 

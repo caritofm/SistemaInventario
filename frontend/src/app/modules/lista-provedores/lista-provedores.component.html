@@ -8,48 +8,47 @@
 <body>
     <div class="container">
         <h2>Lista de Provedores</h2>
-        <mat-table [dataSource]="dataProvedores" class="mat-elevation-z8">
-
-  <!-- Código -->
-            <ng-container matColumnDef="codigo">
-                <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
-                <mat-cell *matCellDef="let provedor"> {{provedor.codigo}} </mat-cell>
-            </ng-container>
+        <mat-table [dataSource]="dataProovedores"  class="mat-elevation-z8">
 
         <!-- Razón Social -->
-        <ng-container matColumnDef="RazonSocial">
-            <mat-header-cell *matHeaderCellDef> Razón Social </mat-header-cell>
-            <mat-cell *matCellDef="let provedor"> {{provedor.RazonSocial}} </mat-cell>
+        <ng-container matColumnDef="Nombre">
+            <mat-header-cell *matHeaderCellDef> Nombre o razon social</mat-header-cell>
+            <mat-cell *matCellDef="let pro">{{pro.nombre}}  </mat-cell>
         </ng-container>
 
         <!-- RUT -->
-        <ng-container matColumnDef="rut">
+        <ng-container matColumnDef="Rut">
             <mat-header-cell *matHeaderCellDef> RUT </mat-header-cell>
-            <mat-cell *matCellDef="let provedor"> {{provedor.rut}} </mat-cell>
+            <mat-cell *matCellDef="let pro">{{pro.rut}} </mat-cell>
         </ng-container>
 
-        <!-- Teléfono -->
-        <ng-container matColumnDef="telefono">
-            <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
-            <mat-cell *matCellDef="let provedor"> {{provedor.telefono}} </mat-cell>
-        </ng-container>
 
         <!-- Dirección Legal -->
-        <ng-container matColumnDef="direccionLegal">
+        <ng-container matColumnDef="direccion">
             <mat-header-cell *matHeaderCellDef> Dirección Legal </mat-header-cell>
-            <mat-cell *matCellDef="let provedor"> {{provedor.direccionLegal}} </mat-cell>
+            <mat-cell *matCellDef="let pro">{{pro.direccion}}  </mat-cell>
         </ng-container>
 
         <!-- Nombre Contacto -->
         <ng-container matColumnDef="nombreContacto">
             <mat-header-cell *matHeaderCellDef> Contacto </mat-header-cell>
-            <mat-cell *matCellDef="let provedor"> {{provedor.nombreContacto}} </mat-cell>
+            <mat-cell *matCellDef="let pro">{{pro.contacto.nombre}} </mat-cell>
+            
         </ng-container>
+        <ng-container matColumnDef="Email">
+            <mat-header-cell *matHeaderCellDef> Email de  Contacto </mat-header-cell>
+            <mat-cell *matCellDef="let pro">{{pro.contacto.email}}  </mat-cell>
+        </ng-container>
+
 
         <!-- Teléfono Contacto -->
         <ng-container matColumnDef="telefonoContacto">
             <mat-header-cell *matHeaderCellDef> Teléfono Contacto </mat-header-cell>
-            <mat-cell *matCellDef="let provedor"> {{provedor.telefonoContacto}} </mat-cell>
+            <mat-cell *matCellDef="let pro">{{pro.contacto.telefono}}  </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="terminosPago">
+            <mat-header-cell *matHeaderCellDef>TerminosPago </mat-header-cell>
+            <mat-cell *matCellDef="let pro">{{ pro.terminosPago ? pro.terminosPago : 'No disponible' }}  </mat-cell>
         </ng-container>
 
         <!-- Encabezado y filas -->

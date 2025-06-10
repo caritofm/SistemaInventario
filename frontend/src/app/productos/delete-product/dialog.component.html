@@ -3,6 +3,6 @@
   ¿Esta seguro de que desea eliminarlo?
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close (click)="eliminarProducto(data.id)">Aceptar</button>
-  <button mat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
+  <button mat-button mat-dialog-close (click)="eliminarProducto()">Aceptar</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="cancelar()">Cancelar</button>
 </mat-dialog-actions>

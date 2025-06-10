@@ -1,0 +1,99 @@
+/* Estilos generales */
+body {
+  font-family: var(--font-family);
+  margin: 20px;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  color: var(--clr-blue-blue);
+  margin-bottom: 5px;
+  font-family: var(--font-family);
+}
+
+h3 {
+  text-align: center;
+  color: #34495e;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+  background: white;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+}
+
+thead {
+  background-color: #2980b9;
+  color: white;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f1f7fc;
+}
+
+/* Botones */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+button {
+  background-color: #2980b9;
+  color: white !important;
+  border: none;
+  padding: 12px 25px;
+  margin: 0 10px;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+}
+
+button:hover {
+  background-color: #1f6391;
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead tr {
+    display: none;
+  }
+  tbody tr {
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  tbody td {
+    padding-left: 50%;
+    text-align: right;
+    position: relative;
+  }
+  tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}

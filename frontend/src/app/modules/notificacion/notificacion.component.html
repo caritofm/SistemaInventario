@@ -1,0 +1,24 @@
+<!-- Muestra alertas del sistema solo si hay -->
+<div *ngIf="alertas.length > 0">
+  <h3>Alertas del Sistema!</h3>
+  <div *ngFor="let alerta of alertas" class="alerta alerta-{{alerta.tipo}}">
+    {{ alerta.mensaje }}
+    <mat-icon>warning</mat-icon>
+  </div>
+</div>
+
+<!-- Muestra notificaciones personales -->
+<div *ngIf="mensajes.length > 0">
+  <h3>Notificaciones Personales</h3>
+  <div *ngFor="let mensaje of mensajes" class="alerta alerta-{{mensaje.tipo}}">
+    {{ mensaje.mensaje }}
+  </div>
+</div>
+
+
+
+
+
+
+
+

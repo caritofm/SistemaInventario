@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Materiales</title>
+    
+</head>
+<body>
+   <div class="container">
+     <h2>Solicitud de Reposición de Stock</h2>
+
+    <label for="usuario">Solicitante</label>
+    <p><strong>Usuario:</strong> {{ usuarioNombre}}</p>
+    <div class="for">
+        <label for="tipo">Tipo de solicitud:</label>
+            <select id="tipo" [(ngModel)]="solicitudReposicion.tipo" name="tipo" required>
+                <option *ngFor="let tipo of tiposSolicitud" [value]="tipo">
+                    {{ tipo | titlecase }}
+                </option>
+            </select>
+
+    </div>
+
+    <div class="cont">
+        <h3>Productos en Bodega - Solicitar Más Stock</h3>
+        <p><small>Selecciona los productos que necesitas reabastecer</small></p>
+        
+        <div *ngFor="let prod of productos" class="producto-item">
+            <div class="producto-info">
+                <div class="codigo-producto">Código: {{ prod.codigo }}</div>
+                <div>{{ prod.nombre }}</div>
+                <div class="stock-info" [ngClass]="getStockClass(prod.stock)">
+                    <strong>Stock actual: {{ prod.stock }}</strong> 
+                    <span class="stock-status">({{ getNivelStock(prod.stock) }})</span>
+                </div>
+                <!-- Mostrar alerta si el stock es crítico -->
+                <div *ngIf="necesitaReposicion(prod.stock)" class="alerta-reposicion">
+                    ⚠️ Se recomienda reabastecer este producto
+                </div>
+            </div>
+            
+            <div class="cantidad-section">
+                <label for="cantidad-{{ prod.codigo }}">Cantidad a solicitar:</label>
+                <input 
+                  type="number" 
+                  id="cantidad-{{ prod.codigo }}"
+                  [(ngModel)]="prod.cantidadSolicitada" 
+                  min="1" 
+                  placeholder="0">
+                
+                <button mat-button
+                  (click)="solicitarMasStock(prod.codigo, prod.cantidadSolicitada)"
+                  [disabled]="!prod.cantidadSolicitada || prod.cantidadSolicitada <= 0">
+                  Solicitar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mostrar solicitudes de reposición agregadas -->
+    <div *ngIf="solicitudReposicion.materiales.length > 0" class="solicitud-preview">
+      <h4>Solicitudes de Reposición de Stock:</h4>
+      <ul>
+        <li *ngFor="let material of solicitudReposicion.materiales" class="solicitud-item">
+          <div><strong>Código:</strong> {{ material.codigo }}</div>
+          <div><strong>Stock Actual:</strong> {{ material.cantidadActual }}</div>
+          <div><strong>Cantidad Solicitada:</strong> {{ material.cantidadSolicitada }}</div>
+          <div><strong>Stock Proyectado:</strong> {{ material.cantidadActual + material.cantidadSolicitada }}</div>
+        </li>
+      </ul>
+      
+      <button mat-button (click)="limpiarSolicitud()" style="background-color: #dc3545;">
+        Limpiar Solicitud
+      </button>
+    </div>
+
+    <button mat-button
+        class="enviar-btn"
+        (click)="enviarSolicitudReposicion()" 
+        [disabled]="!usuarioId || usuarioId === null|| solicitudReposicion.materiales.length === 0">
+        Enviar Solicitud de Reposición
+    </button>
+
+   </div>
+</body>
+</html>

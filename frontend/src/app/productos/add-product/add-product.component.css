@@ -228,3 +228,21 @@ body {
                 border-radius: 20px;
             }
         }
+        
+ .custom-select {
+  background-color: var(--clr-white);
+  border: 2px solid var(--clr-blue-blue);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  color: var(--clr-blue-dark);
+  font-family: var(--font-family);
+ 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+
+

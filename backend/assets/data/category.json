@@ -1,0 +1,38 @@
+[
+    {
+        "id":"1",
+        "nombreCategoria":"Herramientas manuales"
+    },
+    {
+        "id":"2",
+        "nombreCategoria":"Herramientas eléctricas"
+    },
+    {
+        "id":"3",
+        "nombreCategoria":"Materiales metalicos"
+    },
+    {
+        "id":"4",
+        "nombreCategoria":" Fijaciones"
+    },
+    {
+        "id":"5",
+        "nombreCategoria":"Abrasivos"
+    },
+    {
+        "id":"6",
+        "nombreCategoria":"Lubricantes"
+    },
+    {
+        "id":"7",
+        "nombreCategoria":"Elementos de protección personal"
+    },
+    {
+        "id":"8",
+        "nombreCategoria":"Señaletica y cintas"
+    },
+    {
+        "id":"9",
+        "nombreCategoria":"Limpieza"
+    }
+]

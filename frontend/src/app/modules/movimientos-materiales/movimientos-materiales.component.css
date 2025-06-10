@@ -1,0 +1,127 @@
+/* Contenedor general */
+form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f4f6f8;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h2 {
+  text-align: center;
+  color: var(--clr-blue-dark);
+  font-family: var(--font-family);
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--clr-blue-blue);
+  font-family: var(--font-family)!important;
+}
+
+/* Inputs y selects */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  color: white;
+  background-color: var(--clr-blue-blue);
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+
+
+/* Botón */
+button[type="submit"] {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+
+button[disabled] {
+  background-color: var(--clr-blue-dark);
+  cursor: pointer;
+}
+
+/* Información de usuario */
+.usuario-info {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-style: italic;
+  font-family: var(--font-family);
+}
+
+/* Base ya tienes un max-width en 500px que está bien */
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+  form {
+    max-width: 90%;
+    padding: 1.5rem 1rem;
+    margin: 1rem auto;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  button[type="submit"] {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  button[type="submit"] {
+    padding: 12px;
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  button[type="submit"] {
+    font-size: 0.85rem;
+    padding: 6px;
+  }
+}

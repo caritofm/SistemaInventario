@@ -6,40 +6,120 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-      
-            <h2>Modificar Producto</h2>
-            <!-- modificar-producto.component.html -->
-            <div class="input">
-                <label>Código</label>
-                <input type="text" [(ngModel)]="producto.codigo">
-                <mat-icon>edit</mat-icon>
-            </div>
-             <div class="input">
-                <label>Nombre</label>
-                <input type="text" [(ngModel)]="producto.nombre">
-                 <mat-icon>edit</mat-icon>
-            </div>
-             <div class="input">
-                <label>Descripcion</label>
-                <input type="text" class="input-chico" [(ngModel)]="producto.descripcion">
-                 <mat-icon>edit</mat-icon>
-            </div>
-             <div class="input">
-                <label>Stock</label>
-                <input type="text" [(ngModel)]="producto.stock"> 
-                <mat-icon>edit</mat-icon>
-            </div>
-             <div class="input">
-                <label>Código</label>
-                <input type="text" [(ngModel)]="producto.Ubicacion">
-                 <mat-icon>edit</mat-icon>
-            </div>
-            <button  mat-button color="primary" style="color: black;">Guardar Cambios</button>
-        
+   <div class="container">
+  <h1 class="main-title">Modificar Producto</h1>
   
-
-
+  <form (ngSubmit)="guardarCambios()" #productForm="ngForm" *ngIf="producto">
+    
+    <!-- Código del producto -->
+    <div class="input-group">
+      <label class="input-label">Código</label>
+      <div class="input-field">
+        <input 
+          class="custom-input"
+          type="text"
+          [(ngModel)]="producto.codigo" 
+          name="codigo"
+          required
+          placeholder="Código del producto">
+        <mat-icon class="edit-icon">edit</mat-icon>
+      </div>
     </div>
+
+    <!-- Nombre del producto -->
+    <div class="input-group">
+      <label class="input-label">Nombre</label>
+      <div class="input-field">
+        <input 
+          class="custom-input"
+          type="text"
+          [(ngModel)]="producto.nombre" 
+          name="nombre"
+          required
+          placeholder="Nombre del producto">
+        <mat-icon class="edit-icon">edit</mat-icon>
+      </div>
+    </div>
+    
+    <!-- Stock -->
+    <div class="input-group">
+      <label class="input-label">Stock</label>
+      <div class="input-field">
+        <input 
+          class="custom-input"
+          type="number"
+          [(ngModel)]="producto.stock" 
+          name="stock"
+          required
+          min="0"
+          placeholder="Cantidad en stock">
+        <mat-icon class="edit-icon">edit</mat-icon>
+      </div>
+    </div>
+
+    <!-- Categoría -->
+    <div class="input-group">
+      <label class="input-label">Categoría</label>
+      <div class="input-field">
+        <select 
+          class="custom-select"
+          [(ngModel)]="categoriaSeleccionada" 
+          name="categoriaSelect"
+          (change)="onCategoriaChange()">
+          <option value="" disabled>{{ getNombreCategoria(producto.categoria) }}</option>
+          <option 
+            *ngFor="let categoria of categorias" 
+            [value]="categoria._id">
+            {{ categoria.nombreCategoria }}
+          </option>
+        </select>
+        <mat-icon class="edit-icon">edit</mat-icon>
+      </div>
+    </div>
+
+
+     <!--Ubicacion-->
+    <div class="input-group">
+        <label class="input-label">Ubicación</label>
+        <div class="input-field">
+            <select
+            class="custom-select"
+            [(ngModel)]="producto.ubicacion"
+            name="ubicacion">
+                <option *ngFor="let ubi of ubicacion" [value]="ubi._id">
+                {{ ubi.nombreUbicacion }}
+                </option>
+            </select>
+            <mat-icon class="edit-icon">edit</mat-icon>
+
+        </div>
+    </div>
+
+
+    <!-- Imagen del producto -->
+    <div class="imagen-section" *ngIf="producto.foto">
+      <label class="imagen-label">Imagen</label>
+      <div class="image-container">
+        <img 
+          [src]="'http://localhost:3000/uploads/' + producto.foto" 
+          [alt]="'Imagen de ' + producto.nombre"
+          class="product-image" />
+      </div>
+    </div>
+
+    <!-- Botón guardar -->
+    <button 
+      class="save-button"
+      type="submit"
+      [disabled]="!productForm.form.valid">
+      Guardar Cambios
+    </button>
+
+  </form>
+
+ 
+
+</div>
+    
 </body>
 </html>

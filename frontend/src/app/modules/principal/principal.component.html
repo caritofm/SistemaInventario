@@ -6,32 +6,43 @@
     <title>Document</title>
 </head>
 <body>
-   <div class="container">
-    <div class="container-card">
-        <mat-card appearance="outlined" class="card" *ngFor="let card of cards" [routerLink]="card.route">
-            <mat-card-content>
-                <mat-icon>{{ card.icon }}</mat-icon>
-                <mat-card-title class="titulo">{{ card.label }}</mat-card-title>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div class="notifications-panel">
-        <h2>Solicitudes Recientes</h2>
-        <mat-card class="notification" *ngFor="let notification of notifications">
-            <mat-card-content class="text">
-                {{notification}}
-                <div class="card-action">
-                    <button mat-fab>
-                    <mat-icon>check</mat-icon>
-                </button>
-                <button mat-fab>
-                    <mat-icon>close</mat-icon>
-                </button>
+    <div class="container">
+        <div class="dashboard" *ngIf="usuarioRol==='admin'">
+            <div class="dashboard-container">
+            <h4 class="dashboard-title">Hola {{usuarioNombre}} Bienvenid{{'@'}}</h4>
+
+                    <div class="card yellow">
+                    <i class="fas fa-box"></i>
+                    <h3>Productos</h3>
+                    <p>{{ totalProductos }}</p>
+                    </div>
+
+                    <div class="card green">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Entradas</h3>
+                    <p>{{entradaTotal}}</p>
+                    </div>
+
+                    <div class="card red">
+                    <i class="fas fa-arrow-right"></i>
+                    <h3>Salidas</h3>
+                    <p>{{ totalSalida }}</p>
+                    </div>
+
+                    <div class="card red">
+                    <i class="fas fa-arrow-right"></i>
+                    <h3 routerLink="/ver-solicitud">Solicitudes</h3>
+                    <p>{{ totalPendientes}}</p>
+                    </div>
                 </div>
-            </mat-card-content>
-        </mat-card>
     </div>
-</div>
+    <div class="dashboard" *ngIf="usuarioRol === 'gestor'">
+        <h4 class="dashboard-title" >Hola, {{usuarioNombre}} Bienvenid{{'@'}} </h4>
+    </div>
+
+        <app-notificacion></app-notificacion>
+    
+    </div>
 
 
 </body>

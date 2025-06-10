@@ -1,10 +1,12 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MatCardModule } from "@angular/material/card";
 import { ServicesBDService } from "../../services/services-bd.service";
 import { Producto } from "../../interface/producto";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { HttpClientModule } from "@angular/common/http";
+import { Categoria } from "../../interface/categoria";
+import { Ubicacion } from "../../interface/ubicacion";
 @Component({
     selector: 'app-add-product',
     standalone: true,
@@ -13,11 +15,26 @@ import { HttpClientModule } from "@angular/common/http";
     styleUrls: ['./add-product.component.css']
 })
 
-export class AddProductComponent {
-  productos: Producto[] = [];
+export class AddProductComponent implements OnInit{
 
+  ngOnInit() {
+  this.servicebd.getCategorias().subscribe((data: Categoria[]) => {
+    this.categorias = data;
+  });
+
+  this.servicebd.getUbicacion().subscribe((data:Ubicacion[]) => {
+    console.log('Ubicaciones recibidas:', data);
+    this.ubicacions = data;
+  })
+}
+
+  productos: Producto[] = [];
+  categoriaSelecionada : string = "";
+   categorias : Categoria[] = []
+
+   ubicacions :Ubicacion[] = []
   constructor(private servicebd :ServicesBDService, private snackbar: MatSnackBar){}
-  nuevoProducto :Producto = {_id:'',codigo:'', nombre:'', categoria: '',stock:0, ubicacion:'' }
+  nuevoProducto :Producto = {_id:'',  codigo:'',nombre:'', categoria: '',stock:0, ubicacion:'', foto:null }
   selectedFile: File | null = null;
   imagePreview : string | null = null;
   
@@ -37,7 +54,6 @@ export class AddProductComponent {
   const file = event.target.files[0];
   if(file){
     this.selectedFile = file;
-    this.nuevoProducto.foto = file; // Sincroniza ambos
 
     const reader = new FileReader();
     reader.onload = () =>{

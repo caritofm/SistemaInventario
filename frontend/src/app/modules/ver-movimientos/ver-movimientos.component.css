@@ -1,0 +1,30 @@
+h2 {
+  text-align: center;
+  margin-top: 2rem;
+  color: #2c3e50;
+  font-family: var(--font-family);
+  font-weight: bold;
+}
+
+table {
+  width: 90%;
+  margin: 1rem auto;
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+thead {
+  background-color: var(--clr-blue-blue);
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

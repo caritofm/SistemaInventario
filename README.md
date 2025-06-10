@@ -9,3 +9,5 @@ ng generate component modules/componente --> para crera un componente
 Comandos para express js 
 cd backend 
 node index.js o nodemon index.js
+
+npm install moongose --> en caso de dar errores en el backend 

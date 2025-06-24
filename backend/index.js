@@ -5,6 +5,7 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const Usuario = require('./models/usuarios'); // Asegúrate de que esta ruta esté correcta
+const {authenticateToken} = require('./middlewares/autenticateToken')
 
 const app = express();
 app.use(cors());
@@ -39,6 +40,11 @@ mongoose.connect('mongodb+srv://carolfloresm:0VBajr2eLL8CacgJ@cluster0.hgmgeel.m
     app.use('/api/proveedores', require('./routes/proveedores'));
     app.use('/api/solicitud', require('./routes/solicitudes'));
     app.use('/api/notificaciones', require('./routes/notificacions'));
+    app.use('/api/lote', require('./routes/lote'));
+    app.use('/api/kit', require('./routes/kit'));
+    app.use('/api/bitacora', require('./routes/bitacora'))
+    
+
 
     app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

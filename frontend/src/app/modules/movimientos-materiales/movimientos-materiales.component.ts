@@ -35,17 +35,25 @@ export class MovimientosMaterialesComponent {
   ) {}
 
   ngOnInit() {
-    this.usuario_id = localStorage.getItem('usuarioId') || '';
-    this.usuarioNombre = localStorage.getItem('usuarioNombre') || 'Nombre no identificado';
-    this.nuevoMovimiento.usuario_id = this.usuario_id;
-
-    console.log('Usuario:', this.usuarioNombre, 'ID:', this.usuario_id);
-
-    this.db.getProductos().subscribe(res => {
-      this.productos = res;
-      console.log('Productos:', this.productos);
-    });
+  const usuarioGuardado = localStorage.getItem('usuario');
+  console.log('🔍 Usuario desde localStorage:', usuarioGuardado);
+  if (usuarioGuardado) {
+    const usuario = JSON.parse(usuarioGuardado);
+    this.usuario_id = usuario.id; // ✅ Aquí recuperas el ID real
+    this.usuarioNombre = usuario.nombre;
+  } else {
+    console.warn('⚠️ Usuario no encontrado en localStorage');
   }
+
+  this.nuevoMovimiento.usuario_id = this.usuario_id;
+  console.log('Id', this.usuario_id)
+
+  this.db.getProductos().subscribe(res => {
+    this.productos = res;
+    console.log('Productos:', this.productos);
+  });
+}
+
 
   registrarMovimiento() {
     this.nuevoMovimiento.usuario_id = this.usuario_id;

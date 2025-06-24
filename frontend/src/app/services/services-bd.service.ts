@@ -1,6 +1,6 @@
 import { Proveedores } from './../interface/proveedores';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -22,6 +22,11 @@ export class ServicesBDService {
   private apiURLSolicitud = 'http://localhost:3000/api/solicitud';
   private apiURLProveedores = 'http://localhost:3000/api/proveedores';
   private apiURLMovimientos = 'http://localhost:3000/api/movimientos';
+  private apiURLBitacora = 'http://localhost:3000/api/bitacora';
+  
+  
+
+
 
   constructor(private http: HttpClient) { }
 
@@ -50,7 +55,9 @@ getStockTotal() {
 
 
   addProducto(producto: FormData): Observable<Producto> {
-    return this.http.post<Producto>(this.apiURL, producto).pipe(
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<Producto>(this.apiURL, producto, { headers }).pipe(
       catchError(this.handleError) 
     );
   }
@@ -124,11 +131,15 @@ getProveedores():Observable <Proveedores[]>{
 //crear movimientos
 
 addMovimientos( movimiento: any){
-  return this.http.post(this.apiURLMovimientos, movimiento)
+    const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.post(this.apiURLMovimientos, movimiento, {headers})
 }
 
 getMovimientos(){
-  return this.http.get<any>(this.apiURLMovimientos)
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<any>(this.apiURLMovimientos, {headers})
 }
 
 getTotalEntrada(){
@@ -159,6 +170,11 @@ getTotalSolicitudes() {
 getNotificacionesPorUsuario(usuario_id: string):Observable<Alerta[]> {
   return this.http.get<Alerta[]>(`http://localhost:3000/api/notificaciones/${usuario_id}`);
 }
+obtenerBitacora(): Observable<any[]> {
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<any[]>(this.apiURLBitacora, { headers });
+  }
 
 
 

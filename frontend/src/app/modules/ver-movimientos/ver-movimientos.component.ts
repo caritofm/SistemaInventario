@@ -18,18 +18,18 @@ export class VerMovimientosComponent {
   usuarioNombre: string = '';
 
    nuevoMovimiento = {
-    productoId: '',
+    producto_id: '',
     tipo: '',
     cantidad: 0,
     motivo: '',
-    usuarioId: '',
+    usuario_id: '',
     fecha: new Date()
   };
 
   ngOnInit() {
     this.usuarioId = localStorage.getItem('_id') || 'Id no identificado'; // 🔧 corregido
     this.usuarioNombre = localStorage.getItem('usuarioNombre') || 'Nombre no identificado';
-    this.nuevoMovimiento.usuarioId = this.usuarioId;
+    this.nuevoMovimiento.usuario_id = this.usuarioId;
    
 
   console.log('Usuario:', this.usuarioNombre, 'ID:', this.usuarioId);

@@ -30,15 +30,15 @@ login() {
     next: (response) => {
       console.log('Login exitoso:', response);
 
-      if (response.usuario) {
-        // ✅ Guardar el objeto completo
+      if (response.usuario && response.token) {
+        // ✅ Guardar token
+        localStorage.setItem('token', response.token);
+
+        // ✅ Guardar datos del usuario
         localStorage.setItem('usuario', JSON.stringify(response.usuario));
+        localStorage.setItem('UsuarioId', response.usuario._id);
         localStorage.setItem('usuarioRol', response.usuario.rol);
         localStorage.setItem('usuarioNombre', response.usuario.nombre);
-
-        console.log('usuario id', response.usuario._id);
-        console.log('usuarioRol:',response.usuario.rol)
-        console.log('UsuarioNombre', response.usuario.nombre)
       }
 
       alert('Login exitoso');
@@ -46,9 +46,10 @@ login() {
     },
     error: (err) => {
       console.error('Error en login:', err);
-      alert('Credenciales inválidas');
+      alert(err?.error?.mensaje || 'Credenciales inválidas');
     }
   });
 }
+
 
 }

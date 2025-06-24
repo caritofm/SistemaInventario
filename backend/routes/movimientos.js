@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Movimiento = require('../models/movimientosInventario');
+const { authenticateToken } = require('../middlewares/autenticateToken');
+const { authorizeRoles } = require('../middlewares/auth.middleware');
 
 router.get('/', async (req, res) => {
     try{
@@ -25,12 +27,12 @@ router.get('/', async (req, res) => {
             }
             
             // Verificar Producto
-            const productoExiste = await mongoose.model('Producto').findById(sinPopulate[0].productoId);
+            const productoExiste = await mongoose.model('Producto').findById(sinPopulate[0].producto_id);
             console.log('📦 Producto existe:', !!productoExiste);
             if(productoExiste) {
                 console.log('📦 Producto encontrado:', productoExiste.nombre);
             } else {
-                console.log('❌ NO se encontró producto con ID:', sinPopulate[0].productoId);
+                console.log('❌ NO se encontró producto con ID:', sinPopulate[0].producto_id);
             }
         }
         
@@ -38,12 +40,12 @@ router.get('/', async (req, res) => {
         console.log('🔄 Intentando populate...');
         const conPopulate = await Movimiento.find()
             .populate({
-                path: 'usuarioId',
+                path: 'usuario_id',
                 select: 'nombre',
                 options: { strictPopulate: false }
             })
             .populate({
-                path: 'productoId',
+                path: 'producto_id',
                 select: 'nombre',
                 options: { strictPopulate: false }  
             })
@@ -59,7 +61,7 @@ router.get('/', async (req, res) => {
                 options: { strictPopulate: false }
             })
             .populate({
-                path: 'productoId', 
+                path: 'producto_id', 
                 select: 'nombre',
                 options: { strictPopulate: false }
             });
@@ -101,7 +103,7 @@ router.get('/salida/total', async (req, res) => {
 
 
 
-router.post('/', async (req, res) => {
+router.post('/',authenticateToken, authorizeRoles(['admin', 'gestor']), async (req, res) => {
   try {
 
     const{producto_id, tipo, cantidad,usuario_id, fecha, motivo} = req.body
@@ -114,7 +116,7 @@ router.post('/', async (req, res) => {
         producto_id: producto_id,
         tipo:tipo,
         cantidad:cantidad,
-        usuario_id : usuario_id,
+        usuario_id : req.user.id,
         fecha: fecha,
         motivo:motivo
 
@@ -125,6 +127,9 @@ router.post('/', async (req, res) => {
     
     // Antes de guardar
     console.log('Antes de guardar - usuarioId:', nuevo.usuarioId);
+    console.log('Usuario desde token:', req.user);
+    console.log('Usuario ID usado:', req.user.id);
+
     
     await nuevo.save();
     console.log('🟢 Guardado exitoso');

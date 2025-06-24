@@ -19,6 +19,7 @@ export class LoginComponent {
   correo: string = '';
   password: string = '';
     constructor(private auth: AuthserviceService, private router: Router){}
+
     login() {
   const credenciales = {
     correoElec: this.correo,
@@ -28,24 +29,26 @@ export class LoginComponent {
   this.auth.login(credenciales).subscribe({
     next: (response) => {
       console.log('Login exitoso:', response);
-      
-      if (response.usuario) {
-        // Solo guardar el nombre del usuario
+
+      if (response.usuario && response.token) {
+        // ✅ Guardar token
+        localStorage.setItem('token', response.token);
+
+        // ✅ Guardar datos del usuario
         localStorage.setItem('usuario', JSON.stringify(response.usuario));
         localStorage.setItem('UsuarioId', response.usuario._id);
         localStorage.setItem('usuarioRol', response.usuario.rol);
-
         localStorage.setItem('usuarioNombre', response.usuario.nombre);
       }
-      
+
       alert('Login exitoso');
-      // Redirigir a donde necesites
       this.router.navigate(['/principal']);
     },
     error: (err) => {
       console.error('Error en login:', err);
-      alert('Credenciales inválidas');
+      alert(err?.error?.mensaje || 'Credenciales inválidas');
     }
   });
 }
+
 }

@@ -16,6 +16,11 @@ export const routes: Routes = [
           import('./modules/principal/principal.component').then(m => m.PrincipalComponent),
       },
       {
+        path:'bitacora',
+        loadComponent:() =>
+          import('./modules/bitacora/bitacora.component').then(m => m.BitacoraComponent),
+      },
+      {
         path: 'informe',
         canActivate:[authGuard],
         loadComponent: () =>

@@ -63,13 +63,17 @@ getStockTotal() {
   }
 
   deleteProducto(id: string): Observable<any> {
-    return this.http.delete(`${this.apiURL}/${id}`).pipe(
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.apiURL}/${id}`, {headers}).pipe(
       catchError(this.handleError)
     );
   }
 
   updateProducto(id: string, producto: Producto): Observable<Producto> {
-    return this.http.put<Producto>(`${this.apiURL}/${id}`, producto).pipe(
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<Producto>(`${this.apiURL}/${id}`, producto, {headers}).pipe(
       catchError(this.handleError)
     );
   }
@@ -107,7 +111,9 @@ getStockTotal() {
   //obtener Solicitudes
 
   getSolicitudes():Observable<Solicitud[]>{
-    return this.http.get<Solicitud[]>(this.apiURLSolicitud);
+    const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Solicitud[]>(this.apiURLSolicitud, {headers});
   }
   //obtener usuarios
   getUsuario(_id: string): Observable<Usuario> {
@@ -174,6 +180,14 @@ obtenerBitacora(): Observable<any[]> {
   const token = localStorage.getItem('token');
   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   return this.http.get<any[]>(this.apiURLBitacora, { headers });
+  }
+  getProductosPorCategoria(categoriaId: string) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any[]>(`${this.apiURL}/categoria/${categoriaId}`, {headers});
+  }
+    getUbicaciones() {
+    return this.http.get<any[]>(`${this.apiURLUbicacion}/ubicaciones`);
   }
 
 

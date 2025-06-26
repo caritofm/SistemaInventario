@@ -1,6 +1,7 @@
 <div class="container">
   <div class="container">
   <h2>Solicitud Materiales</h2>
+
   <table border="1" cellspacing="0" cellpadding="5">
     <thead>
       <tr>
@@ -13,19 +14,28 @@
         <th>Acciones</th>
       </tr>
     </thead>
+    
     <tbody>
+      <tr *ngIf="dataSolicitudes.length === 0">
+          <td colspan="7" class="sin-datos">
+            No hay solicitudes disponibles.
+          </td>
+        </tr>
       <ng-container *ngFor="let solicitud of dataSolicitudes">
+        
         <tr *ngFor="let mat of solicitud.materiales">
+         
           <td>{{ isProducto(mat.productoId) ? mat.productoId.codigo : 'Cargando...' }}</td>
           <td>{{ isProducto(mat.productoId) ? mat.productoId.nombre : 'Cargando...' }}</td>
           <td>{{ isProducto(mat.productoId) ? mat.productoId.stock : '-' }}</td>
           <td>{{ mat.cantidad }}</td>
           <td>{{ solicitud.tipo }}</td>
-          <td>{{ usuarioNombre }}</td>
+          <td>{{ solicitud.usuario_id?.nombre || 'Usuario no encontrado' }}</td>
           <td>
             <button mat-icon-button color="accent" *ngIf="solicitud._id" (click)="aceptarSolicitud(solicitud._id)" matTooltip="Aceptar"><mat-icon>done_outline</mat-icon></button>
             <button mat-icon-button color="accent" *ngIf="solicitud._id" (click)="rechazarSolicitud(solicitud._id)" matTooltip="Rechazar"><mat-icon>cancel</mat-icon></button>
           </td>
+         
         </tr>
       </ng-container>
     </tbody>

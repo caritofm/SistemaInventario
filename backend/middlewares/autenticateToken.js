@@ -13,6 +13,7 @@ function authenticateToken(req, res, next) {
     }
 
     req.user = user; // { id, rol, nombre }
+    req.usuarioId = user.id;
     next();
   });
 }

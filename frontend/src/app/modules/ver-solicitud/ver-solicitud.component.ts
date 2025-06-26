@@ -20,15 +20,11 @@ import { id } from '@swimlane/ngx-charts';
 export class VerSolicitudComponent implements OnInit {
 
   constructor(private db: ServicesBDService){}
-  dataSolicitudes: Solicitud[] =[]
+  dataSolicitudes: any[] =[]
+  
 
-  usuarioNombre: string = '';
 
   ngOnInit(): void {
-    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
-    const usuarioId = usuario._id || null;
-    this.usuarioNombre = usuario.nombre || null;
-    console.log('Usuarios', usuarioId)
     this.db.getSolicitudes().subscribe({
       next: res=> {
         this.dataSolicitudes = res
@@ -41,10 +37,8 @@ export class VerSolicitudComponent implements OnInit {
 
     })
 
-    
-   
-
   }
+
 
   isProducto(obj: any): obj is Producto {
   return obj && typeof obj === 'object' && 'codigo' in obj;

@@ -14,11 +14,14 @@ export class UbicacionCategoriaComponent implements OnInit{
 
   constructor(private db: ServicesBDService){}
 
-  ubicacion: Ubicacion[] = [];
+  ubicacion: any[] = [];
   ngOnInit(): void {
-    this.db.getUbicacion().subscribe(data => {
+    this.db.getUbicaciones().subscribe(data => {
       this.ubicacion = data
-    })
+      console.log('Ubicaciones', this.ubicacion)
+    });
+
+    
     
   }
 

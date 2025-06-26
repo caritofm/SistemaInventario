@@ -1,96 +1,119 @@
 [
     {
         "nombreUbicacion":"RACK- A1",
-        "descripcion": "Llaves"
+        "descripcion": "Llaves",
+        "categoria":"683e65f7f48cd3d7cacc6573"
     },
     {
         "nombreUbicacion": "RACK - A2",
-        "descripcion": "Alicates"
+        "descripcion": "Alicates",
+        "categoria":"683e65f7f48cd3d7cacc6573"
 
     },
     {
         "nombreUbicacion": "RACK - A3",
-        "descripcion": "Destornilladores" 
+        "descripcion": "Destornilladores",
+        "categoria":"683e65f7f48cd3d7cacc6573"
     },
     {
         "nombreUbicacion": "RACK - A4",
-        "descripcion": "Martillos" 
+        "descripcion": "Martillos",
+        "categoria":"683e65f7f48cd3d7cacc6573"
     },
     {
         "nombreUbicacion": "RACK - A5",
-        "descripcion": "Esmeriles" 
+        "descripcion": "Esmeriles",
+        "categoria":"683e65f7f48cd3d7cacc6576"
     },
     {
         "nombreUbicacion": "RACK - B1",
-        "descripcion": "Taladros" 
+        "descripcion": "Taladros",
+        "categoria":"683e65f7f48cd3d7cacc6576" 
     },
     {
         "nombreUbicacion": "RACK - B2",
-        "descripcion": "Amoldadoras" 
+        "descripcion": "Amoldadoras",
+        "categoria":"683e65f7f48cd3d7cacc6576"
     },
     {
         "nombreUbicacion": "RACK - B3",
-        "descripcion": "Sierras electricas" 
+        "descripcion": "Sierras electricas",
+        "categoria":"683e65f7f48cd3d7cacc6576"
     },
     {
         "nombreUbicacion": "RACK - B4",
-        "descripcion": "Pulidoras" 
+        "descripcion": "Pulidoras",
+        "categoria":"683e65f7f48cd3d7cacc6576"
     },
     {
         "nombreUbicacion": "RACK - C1",
-        "descripcion": "Planchas" 
+        "descripcion": "Planchas",
+        "categoria": "683e65f7f48cd3d7cacc6579"
     },
     {
         "nombreUbicacion": "RACK - C2",
-        "descripcion": "Tubos" 
+        "descripcion": "Tubos",
+        "categoria": "683e65f7f48cd3d7cacc6579"
     },
     {
         "nombreUbicacion": "RACK - C3",
-        "descripcion": "Tuercas" 
+        "descripcion": "Tuercas ",
+        "categoria": "683e65f7f48cd3d7cacc657c"
     },
     {
         "nombreUbicacion": "RACK - C4",
-        "descripcion": "Arandela" 
+        "descripcion": "Arandela",
+        "categoria": "683e65f7f48cd3d7cacc6579"
     },
     {
         "nombreUbicacion": "RACK - C5",
-        "descripcion": "Lija" 
+        "descripcion": "Lija", 
+        "categoria":"683e65f7f48cd3d7cacc657c"
     },
     {
         "nombreUbicacion": "RACK - D1",
-        "descripcion": "Casco" 
+        "descripcion": "Casco",
+        "categoria": "683e65f7f48cd3d7cacc6585"
     },
     {
         "nombreUbicacion": "RACK - D2",
-        "descripcion": "Lentes" 
+        "descripcion": "Lentes",
+        "categoria": "683e65f7f48cd3d7cacc6585"
     },
     {
         "nombreUbicacion": "RACK - D3",
-        "descripcion": "Protectores auditivos" 
+        "descripcion": "Protectores auditivos",
+        "categoria": "683e65f7f48cd3d7cacc6585"
     },
     {
         "nombreUbicacion": "RACK - D4",
-        "descripcion": "Mascarillas" 
+        "descripcion": "Mascarillas",
+        "categoria": "683e65f7f48cd3d7cacc6585"
 
     },
     {
         "nombreUbicacion": "RACK - D5",
-        "descripcion": "Señales de seguridad" 
+        "descripcion": "Señales de seguridad",
+        "categoria": "683e65f7f48cd3d7cacc6588"
     },
     {
         "nombreUbicacion": "RACK - D5",
-        "descripcion": "Cintas de advertencia" 
+        "descripcion": "Cintas de advertencia",
+        "categoria": "683e65f7f48cd3d7cacc6588"
     },
     {
         "nombreUbicacion": "RACK - E1",
-        "descripcion": "Solventes" 
+        "descripcion": "Aceite hidraulico" ,
+        "categoria":"683e65f7f48cd3d7cacc6582"
     },
     {
         "nombreUbicacion": "RACK - E2",
-        "descripcion": "Trapos industriales" 
+        "descripcion": "Trapos industriales",
+        "categoria":"683e65f8f48cd3d7cacc658b"
     },
     {
         "nombreUbicacion": "RACK - E3",
-        "descripcion": "Desengrasantes" 
+        "descripcion": "Desengrasantes",
+        "categoria":"683e65f8f48cd3d7cacc658b"
     }
 ]

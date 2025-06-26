@@ -10,6 +10,8 @@ exports.login = (req, res) => {
   const { correoElec, contraseña } = req.body;
 
   try {
+    const rawData = fs.readFileSync(dataPath, 'utf8');
+    const usuarios = JSON.parse(rawData);
 
     const usuario = usuarios.find(u =>
       u.correoElec === correoElec && u.contraseña === contraseña
@@ -18,7 +20,6 @@ exports.login = (req, res) => {
     if (!usuario) {
       return res.status(401).json({ mensaje: 'Credenciales inválidas' });
     }
-
     const token = jwt.sign(
       { id: usuario._id, rol: usuario.rol, nombre: usuario.nombre },
       'secreto123',

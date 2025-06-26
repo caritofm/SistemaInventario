@@ -4,8 +4,30 @@ const mongoose = require('mongoose');
 const Solicitud = require('../models/solicitud');
 const Notificacion = require('../models/notificacion');
 const Usuario = require('../models/usuarios');
+const { authenticateToken } = require('../middlewares/autenticateToken');
+const { authorizeRoles } = require('../middlewares/auth.middleware');
 
 
+
+
+router.get('/',authenticateToken, authorizeRoles(['admin']), async (req, res) => {
+  try {
+    // Poblamos usuario_id para obtener datos completos del usuario
+    const solicitudes = await Solicitud.find().populate('usuario_id', 'nombre').populate('materiales.productoId');
+
+    solicitudes.forEach(s => {
+      if (!s.usuario_id) {
+        console.log('Solicitud sin usuario:', s._id);
+      }
+    });
+
+    res.json(solicitudes);
+    console.log('Solicitudes:', solicitudes)
+  } catch (error) {
+    console.error('Error al obtener solicitudes:', error);
+    res.status(500).json({ message: 'Error al obtener solicitudes', error });
+  }
+});
 //solicitudes total
 router.get('/total', async (req, res) => {
   try {
@@ -16,6 +38,8 @@ router.get('/total', async (req, res) => {
     res.status(500).json({ mensaje: 'Error al obtener total de solicitudes' });
   }
 });
+
+
 
 
 
@@ -159,23 +183,7 @@ router.post('/', async (req, res) => {
 
 
 
-router.get('/', async (req, res) => {
-  try {
-    // Poblamos usuario_id para obtener datos completos del usuario
-    const solicitudes = await Solicitud.find().populate('materiales.productoId');
 
-    solicitudes.forEach(s => {
-      if (!s.usuario_id) {
-        console.log('Solicitud sin usuario:', s._id);
-      }
-    });
-
-    res.json(solicitudes);
-  } catch (error) {
-    console.error('Error al obtener solicitudes:', error);
-    res.status(500).json({ message: 'Error al obtener solicitudes', error });
-  }
-});
 
 // Eliminar solicitud por ID
 router.delete('/:id', async (req, res) => {

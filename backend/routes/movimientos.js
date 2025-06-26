@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Movimiento = require('../models/movimientosInventario');
 const { authenticateToken } = require('../middlewares/autenticateToken');
 const { authorizeRoles } = require('../middlewares/auth.middleware');
+const registrarEnBitacora = require('../services/bitacoralogger');
 
 router.get('/', async (req, res) => {
     try{
@@ -103,40 +104,43 @@ router.get('/salida/total', async (req, res) => {
 
 
 
-router.post('/',authenticateToken, authorizeRoles(['admin', 'gestor']), async (req, res) => {
+router.post('/', authenticateToken, authorizeRoles(['admin', 'gestor']), async (req, res) => {
   try {
+    const { producto_id, tipo, cantidad, fecha, motivo } = req.body;
 
-    const{producto_id, tipo, cantidad,usuario_id, fecha, motivo} = req.body
     console.log('🟢 Iniciando POST');
     console.log('Body recibido:', req.body);
-    console.log('usuarioId del body:', req.body.usuarioId);
-    console.log('Tipo de usuarioId:', typeof req.body.usuarioId);
-    
-    const nuevo = new Movimiento({
-        producto_id: producto_id,
-        tipo:tipo,
-        cantidad:cantidad,
-        usuario_id : req.user.id,
-        fecha: fecha,
-        motivo:motivo
-
-
-    })
-    console.log('🟢 Objeto creado:', nuevo);
-    console.log('usuarioId en el objeto:', nuevo.usuarioId);
-    
-    // Antes de guardar
-    console.log('Antes de guardar - usuarioId:', nuevo.usuarioId);
     console.log('Usuario desde token:', req.user);
-    console.log('Usuario ID usado:', req.user.id);
 
-    
+    // Crear nuevo movimiento
+    const nuevo = new Movimiento({
+      producto_id,
+      tipo,
+      cantidad,
+      usuario_id: req.user.id, // ← Usamos el ID desde el token
+      fecha,
+      motivo
+    });
+
+    console.log('🟢 Objeto creado:', nuevo);
+
     await nuevo.save();
-    console.log('🟢 Guardado exitoso');
-    
-    // Después de guardar
-    console.log('Después de guardar - usuarioId:', nuevo.usuarioId);
-    
+
+    // Registrar en bitácora
+    try {
+        await registrarEnBitacora({
+            usuario: req.user.nombre,
+            accion: `Movimiento de tipo ${nuevo.tipo}`,
+            producto: nuevo.producto_id,
+            detalle: `Cantidad: ${nuevo.cantidad}. Motivo: ${nuevo.motivo}`
+        });
+
+        console.log('✅ Bitácora registrada correctamente');
+    } catch (err) {
+        console.error('❌ Error al registrar bitácora:', err.message);
+    }
+
+
     res.status(201).json(nuevo);
   } catch (err) {
     console.error('❌ ERROR COMPLETO:', err);

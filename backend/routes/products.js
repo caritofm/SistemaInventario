@@ -8,7 +8,7 @@ const multer = require('multer');
 const path = require('path');
 
 // ✅ CORREGIDO: Asegúrate de que el nombre del archivo coincida
-const { authenticateToken } = require('../middlewares/autenticateToken'); // Sin 'h'
+const { authenticateToken } = require('../middlewares/autenticateToken');
 const { authorizeRoles } = require('../middlewares/auth.middleware');
 const registrarEnBitacora = require('../services/bitacoralogger');
 
@@ -56,6 +56,23 @@ router.get('/', async (req, res) => {
     res.status(500).json({ mensaje: 'Error al obtener productos' });
   }
 });
+
+// GET /productos/categoria/:id
+router.get('/categoria/:id',authenticateToken,              
+  authorizeRoles(['admin','gestor']), async (req, res) => {
+  try {
+    const productos = await Producto.find({ categoria: req.params.id })
+  .populate('categoria', 'nombreCategoria')
+  .populate('ubicacion', 'nombreUbicacion'); // ✅ Agrega esto
+
+
+    res.json(productos);
+  } catch (error) {
+    console.error('❌ Error al buscar productos por categoría:', error.message);
+    res.status(500).json({ mensaje: 'Error buscando productos', error: error.message });
+  }
+});
+
 
 // Ruta para contar el total de productos 
 router.get('/total', async (req, res) => {
@@ -174,6 +191,14 @@ router.put('/:id',
       if (!productoActualizado) {
         return res.status(404).json({ mensaje: 'Producto no encontrado' });
       }
+
+      await registrarEnBitacora({
+        usuario: req.user.nombre,
+        accion: 'Modificar producto',
+        producto: productoActualizado._id,
+        detalle: `Producto actualizado: ${productoActualizado.nombre}, código: ${productoActualizado.codigo}`
+      });
+
       
       res.json(productoActualizado);
     } catch (error) {
@@ -183,10 +208,9 @@ router.put('/:id',
   }
 );
 
-// Eliminar producto
 router.delete('/:id', 
   authenticateToken,
-  authorizeRoles(['admin','gestor']),
+  authorizeRoles(['admin', 'gestor']),
   async (req, res) => {
     try {
       const productoEliminado = await Producto.findByIdAndDelete(req.params.id);
@@ -195,6 +219,24 @@ router.delete('/:id',
         return res.status(404).json({ mensaje: 'Producto no encontrado' });
       }
 
+      try{
+        console.log('🔍 Registrando en bitácora...');
+        await registrarEnBitacora({
+          usuario: req.user?.nombre || 'Desconocido',
+          accion: 'Eliminar Producto',
+          producto: productoEliminado._id,
+          detalle: `Producto eliminado: ${productoEliminado.nombre}, código: ${productoEliminado.codigo}`
+        });
+        console.log('Bitacora registrada')
+
+      }catch(err){
+
+        console.error('❌ Error al registrar bitácora:', err.message);
+
+      }
+
+
+
       res.json({ mensaje: 'Producto eliminado correctamente' });
     } catch (error) {
       console.error('❌ Error al eliminar producto:', error.message);
@@ -202,5 +244,6 @@ router.delete('/:id',
     }
   }
 );
+
 
 module.exports = router;

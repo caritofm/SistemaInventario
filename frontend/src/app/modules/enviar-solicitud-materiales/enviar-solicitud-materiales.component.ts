@@ -36,28 +36,16 @@ export class EnviarSolicitudMaterialesComponent implements OnInit {
   };
   ngOnInit(): void {
   try {
-    const usuarioData = localStorage.getItem('usuario');
-    if (!usuarioData) {
-      console.error('No hay datos de usuario en localStorage');
-      // Redirigir al login o mostrar error
-      return;
+    const usuarioGuardado = localStorage.getItem('usuario');
+    if (usuarioGuardado) {
+      const usuario = JSON.parse(usuarioGuardado);
+      this.usuarioId = usuario._id || usuario.id || ''; // Ajusta según cómo guardas los datos
+      this.usuarioNombre = usuario.nombre || '';         // También puede ser `usuario.nombreCompleto`
+      console.log('Usuario cargado:', this.usuarioNombre);
+    } else {
+      console.warn('No hay usuario en localStorage');
     }
-
-    const usuario = JSON.parse(usuarioData);
-    
-    // Validar que el usuario tenga _id
-    if (!usuario._id) {
-      console.error('Usuario sin ID válido:', usuario);
-      // Manejar error apropiadamente
-      return;
-    }
-
-    this.usuarioId = usuario._id;
-    this.usuarioNombre = usuario.nombre || 'Usuario sin nombre';
-    this.solicitudReposicion.usuarioId = this.usuarioId;
-
-    console.log('Usuario cargado:', this.usuarioNombre, 'ID:', this.usuarioId);
-    
+  
     this.cargarProductos();
     
   } catch (error) {

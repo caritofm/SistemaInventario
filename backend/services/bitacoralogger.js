@@ -1,17 +1,17 @@
-// services/bitacoraLogger.js
 const Bitacora = require('../models/bitacora');
 
-const registrarEnBitacora = async ({ usuario, accion, producto = null, detalle = '' }) => {
+const registrarEnBitacora = async ({ usuario, accion, producto, detalle }) => {
   try {
-    const nuevoRegistro = new Bitacora({
+    const nuevaEntrada = new Bitacora({
       usuario,
       accion,
       producto,
       detalle
     });
 
-    await nuevoRegistro.save();
-    console.log(`📘 Bitácora: ${accion} por ${usuario}`);
+    await nuevaEntrada.save();
+
+    console.log('📌 Bitácora registrada:', nuevaEntrada);
   } catch (error) {
     console.error('❌ Error al registrar en la bitácora:', error.message);
   }

@@ -72,3 +72,11 @@ button:hover {
   opacity: 0.9;
 }
 
+.sin-datos {
+  text-align: center;
+  color: #666;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+

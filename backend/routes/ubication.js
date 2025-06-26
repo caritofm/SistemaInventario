@@ -14,6 +14,20 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+
+router.get('/ubicaciones', async (req, res) => {
+  try {
+    const ubicaciones = await Ubicacion.find().populate('categoria', 'nombreCategoria');
+    console.log('Ubicaciones obtenidas', ubicaciones)
+    res.json(ubicaciones);
+  } catch (err) {
+    res.status(500).json({ error: 'Error al obtener ubicaciones' });
+  }
+});
+
+
+
 router.get('/cargar', async (req, res) => {
   try {
     let insertadas = 0;
@@ -31,20 +45,27 @@ router.get('/cargar', async (req, res) => {
 });
 
 
-// Cargar las ubicaciones desde el archivo JSON a MongoDB (sin duplicados)
+
+
+
 router.post('/cargar', async (req, res) => {
   try {
     let insertadas = 0;
     for (const ubi of ubicationData) {
       const existe = await Ubicacion.findOne({ nombreUbicacion: ubi.nombreUbicacion });
       if (!existe) {
-        await Ubicacion.create(ubi);
+        const nuevaUbi = {
+          ...ubi,
+          categoria: mongoose.Types.ObjectId(ubi.categoria)
+        };
+        await Ubicacion.create(nuevaUbi);
         insertadas++;
       }
     }
     res.json({ mensaje: `Ubicaciones cargadas: ${insertadas}` });
   } catch (error) {
-    res.status(500).json({ mensaje: 'Error al cargar ubicaciones', error });
+    console.error('Error al cargar ubicaciones:', error);
+    res.status(500).json({ mensaje: 'Error al cargar ubicaciones', error: error.toString() });
   }
 });
 

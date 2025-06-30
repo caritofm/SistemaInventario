@@ -61,3 +61,45 @@
   transform: scale(1.05);
 }
 
+.dashboard-card{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+.card-agregar {
+  width: 180px;
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-family: var(--font-family);
+  background-color: var(--clr-blue-blue);
+  color: white;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-family: var(--font-family);
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 48px;
+  width: 100%;
+  color: white !important; /* azul primario */
+}
+
+

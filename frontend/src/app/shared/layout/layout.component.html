@@ -5,7 +5,7 @@
         <a routerLink="/principal" class="nav-link">Inicio</a>
       </li>
 
-      <li *ngIf="role === 'admin' || role=== 'gestor'" class="nav-item dropdown" id="productos-dropdown">
+      <li *ngIf="role === 'admin' " class="nav-item dropdown" id="productos-dropdown">
         <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Bitacora</button>
         <div class="dropdown-content">
           <a routerLink="/bitacora">Bitacora de movimientos </a>
@@ -16,6 +16,7 @@
         <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Productos</button>
         <div class="dropdown-content">
           <a routerLink="/add-product">Agregar producto</a>
+          <a routerLink="/venc-lotes">Vencimineto de productos </a>
           <a routerLink="/delete-product">Ver productos</a>
           <a routerLink="/enviar-solicitud-materiales">Solicitud Materiales</a>
           <a routerLink="/movimientos-materiales">Agregar movimientos de producto</a>
@@ -34,6 +35,15 @@
         <div class="dropdown-content">
           <a routerLink="/informe">Generar Informe de productos</a>
         </div>
+      </li>
+      <li class="nav-item dropdown" id="productos-dropdown" *ngIf="role === 'admin' || role ==='gestor'">
+        <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Compra</button>
+        <div class="dropdown-content">
+          <a routerLink="/carrito">Solicitar Compras</a>
+          <a routerLink="/productos" *ngIf="role === 'admin'">Solicitar de compra </a>
+        </div>
+        
+       
       </li>
       <li class="nav-item dropdown">
         <button class="dropbtn" (click)="logout()">Cerrar Sesión</button>

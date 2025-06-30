@@ -8,5 +8,6 @@ export interface Producto {
   stock: number;
   categoria: string | Categoria ;
   ubicacion: string;
+  fechaVencimiento?: Date;
   foto: string | null;
 }

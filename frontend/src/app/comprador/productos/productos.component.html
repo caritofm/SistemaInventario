@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Compras registradas</h2>
+
+            <table>
+            <thead>
+                <tr>
+                <th>Fecha</th>
+                <th>Proveedor</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let compra of compras">
+                <td>{{ compra.fecha | date:'short' }}</td>
+                <td>{{ compra.proveedorId?.nombre || 'N/A' }}</td>
+                <td>${{ compra.total }}</td>
+                <td>{{ compra.estado }}</td>
+                <td>
+                    <button 
+                    (click)="aprobarCompra(compra._id)" 
+                    [disabled]="compra.estado === 'Aprobada'">
+                    Aprobar
+                    </button>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+
+    </div>
+</body>
+</html>

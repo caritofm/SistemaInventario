@@ -6,10 +6,11 @@ import {MatButtonModule} from '@angular/material/button'
 import { NotificacionComponent } from '../notificacion/notificacion.component';
 import { CommonModule } from '@angular/common';
 import { ServicesBDService } from '../../services/services-bd.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule, MatIcon,MatButtonModule, MatCardModule, NotificacionComponent, MatIconModule,
+  imports: [RouterModule, MatIcon,MatButtonModule, MatTooltipModule, MatCardModule, NotificacionComponent, MatIconModule,
     CommonModule
   ],
   templateUrl: './principal.component.html',

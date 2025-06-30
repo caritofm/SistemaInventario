@@ -7,10 +7,12 @@ import { NotificacionComponent } from "../notificacion/notificacion.component";
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { ServicesBDService } from '../../services/services-bd.service';
+
+import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [NgxChartsModule, MatIcon, MatCardModule, RouterModule, NotificacionComponent, 
+  imports: [NgxChartsModule, MatIcon, MatCardModule, MatTooltipModule, RouterModule, NotificacionComponent, 
     MatIconModule, CommonModule, MatButtonModule],
   templateUrl: './principal.component.html',
   styleUrl: './principal.component.css'

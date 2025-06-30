@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { matTooltipAnimations, MatTooltipModule } from '@angular/material/tooltip';
 import { CommonModule } from '@angular/common';
+import { Producto } from '../../interface/producto';
+import { ServicesBDService } from '../../services/services-bd.service';
 
 
 @Component({
@@ -13,34 +15,49 @@ import { CommonModule } from '@angular/common';
   templateUrl: './venc-lotes.component.html',
   styleUrls: ['./venc-lotes.component.css']
 })
-export class VencLotesComponent {
+export class VencLotesComponent implements OnInit {
 
-  isplayedColumns: string[] = ['codigo', 'descripcion', 'fechaCreacion', 'fechaVencimiento', 'estado', 'acciones'];
+  productosVec: Producto[] = [];
 
-  lotes = [
-    { codigo: 'LOTE-2024-001', descripcion: 'Engranajes 100mm', fechaCreacion: new Date('2024-05-05'), fechaVencimiento: new Date('2024-07-05') },
-    { codigo: 'LOTE-2024-002', descripcion: 'Placas ASTM A36', fechaCreacion: new Date('2024-04-01'), fechaVencimiento: new Date('2024-06-30') },
-    { codigo: 'LOTE-2024-003', descripcion: 'Ejes hidráulicos', fechaCreacion: new Date('2024-03-10'), fechaVencimiento: new Date('2024-05-15') },
-  ];
+  // ✅ CORREGIR el nombre de la variable
+  displayedColumns: string[] = ['codigo', 'descripcion', 'fechaCreacion', 'fechaVencimiento', 'estado'];
 
-  getEstadoTexto(lote: any) {
+  constructor(private db: ServicesBDService) {}
+
+  ngOnInit(): void {
+    this.db.getFechaVencimiento().subscribe(data => {
+  console.log(data); // ¿Los objetos tienen la propiedad fechaVencimiento?
+});
+
+
+
+  }
+
+  getEstadoTexto(lote: any): string {
     const hoy = new Date();
-    if (hoy > lote.fechaVencimiento) return 'VENCIDO';
+    const vencimiento = new Date(lote.fechaVencimiento);
+    if (hoy > vencimiento) return 'VENCIDO';
+
     const diasAlerta = 15;
     const fechaAlerta = new Date();
     fechaAlerta.setDate(hoy.getDate() + diasAlerta);
-    if (lote.fechaVencimiento <= fechaAlerta) return 'PRÓXIMO A VENCER';
+
+    if (vencimiento <= fechaAlerta) return 'PRÓXIMO A VENCER';
     return 'ACTIVO';
   }
 
-  getEstadoClass(lote: any) {
+  getEstadoClass(lote: any): string {
     const hoy = new Date();
-    if (hoy > lote.fechaVencimiento) return 'estado-vencido';
+    const vencimiento = new Date(lote.fechaVencimiento);
+
+    if (hoy > vencimiento) return 'estado-vencido';
     const diasAlerta = 15;
     const fechaAlerta = new Date();
     fechaAlerta.setDate(hoy.getDate() + diasAlerta);
-    if (lote.fechaVencimiento <= fechaAlerta) return 'estado-proximo';
+
+    if (vencimiento <= fechaAlerta) return 'estado-proximo';
     return 'estado-activo';
   }
-
 }
+
+

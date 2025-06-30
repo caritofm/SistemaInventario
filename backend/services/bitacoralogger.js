@@ -1,10 +1,11 @@
 const Bitacora = require('../models/bitacora');
 
-const registrarEnBitacora = async ({ usuario, accion, producto, detalle }) => {
+const registrarEnBitacora = async ({ usuario, accion,solicitud, producto, detalle }) => {
   try {
     const nuevaEntrada = new Bitacora({
       usuario,
       accion,
+      solicitud,
       producto,
       detalle
     });

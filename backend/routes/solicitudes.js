@@ -6,6 +6,7 @@ const Notificacion = require('../models/notificacion');
 const Usuario = require('../models/usuarios');
 const { authenticateToken } = require('../middlewares/autenticateToken');
 const { authorizeRoles } = require('../middlewares/auth.middleware');
+const registrarEnBitacora = require('../services/bitacoralogger');
 
 
 
@@ -29,7 +30,7 @@ router.get('/',authenticateToken, authorizeRoles(['admin']), async (req, res) =>
   }
 });
 //solicitudes total
-router.get('/total', async (req, res) => {
+router.get('/total', authenticateToken, authorizeRoles(['admin']), async (req, res) => {
   try {
     const totalSolicitudes = await Solicitud.countDocuments();
     res.json({ totalSolicitudes });
@@ -85,7 +86,6 @@ router.post('/aprobar/:id', async (req, res) => {
 
     await noti.save();
     await Solicitud.findByIdAndDelete(id);
-
     res.json({ message: 'Solicitud aprobada y notificación enviada' });
 
   } catch (error) {
@@ -142,44 +142,57 @@ router.post('/rechazar/:id', async (req, res) => {
 
 
 // Crear nueva solicitud
-router.post('/', async (req, res) => {
-  console.log('=== DEBUGGING COMPLETO ===');
-  console.log('Body recibido:', JSON.stringify(req.body, null, 2));
-  
-  try {
-    const { usuario_id, tipo, materiales } = req.body;
-    
-    // Validaciones
-    if (!usuario_id) {
-      return res.status(400).json({ error: 'usuario_id es requerido' });
+router.post('/',
+  authenticateToken,
+  authorizeRoles(['admin', 'gestor']),
+  async (req, res) => {
+    try {
+      const { tipo, materiales } = req.body;
+
+      if (!req.usuarioId) {
+        return res.status(401).json({ error: 'Usuario no autenticado' });
+      }
+
+      if (!Array.isArray(materiales) || materiales.length === 0) {
+        return res.status(400).json({ error: 'Debes proporcionar al menos un material' });
+      }
+
+      const solicitud = new Solicitud({
+        usuario_id: req.usuarioId,
+        tipo,
+        materiales
+      });
+
+      const resultado = await solicitud.save();
+
+      // ✅ Registrar después de guardar exitosamente
+      try {
+        if (req.user?.nombre) {
+          await registrarEnBitacora({
+            usuario: req.user.nombre,
+            accion: 'Solicitud creada',
+            solicitud: resultado._id, // ✅ Usar resultado._id
+            detalle: `Solicitud creada - Tipo: ${tipo}`
+          });
+        }
+      } catch (bitacoraError) {
+        // ✅ Manejo separado del error de bitácora
+        console.error('Error al registrar en bitácora:', bitacoraError);
+        // No fallar la respuesta por error de bitácora
+      }
+
+      res.status(201).json(resultado);
+
+    } catch (error) {
+      console.error('Error al crear solicitud:', error);
+      res.status(500).json({
+        mensaje: 'Error al guardar solicitud',
+        error: error.message
+      });
     }
-    
-    if (!mongoose.Types.ObjectId.isValid(usuario_id)) {
-      return res.status(400).json({ error: 'usuario_id debe ser un ObjectId válido' });
-    }
-    
-    // ✅ CORRECCIÓN: Deja que Mongoose convierta automáticamente
-    const solicitud = new Solicitud({
-      usuario_id: usuario_id, // No necesitas conversión manual
-      tipo,
-      materiales
-    });
-    
-    console.log('Solicitud creada:', solicitud);
-    
-    const resultado = await solicitud.save();
-    
-    console.log('✅ Solicitud guardada exitosamente:', resultado);
-    res.status(201).json(resultado);
-    
-  } catch (error) {
-    console.error('❌ ERROR AL GUARDAR:', error);
-    res.status(500).json({ 
-      mensaje: 'Error al guardar solicitud', 
-      error: error.message 
-    });
   }
-});
+);
+
 
 
 

@@ -15,6 +15,25 @@
   </div>
 </div>
 
+<div class="bitacora-container" *ngIf=" rolUsuario === 'admin'">
+  <h3 class="titulo">Últimos movimientos (bitácora)</h3>
+
+  <ul *ngIf="bitacoraReciente.length > 0" class="bitacora-lista">
+    <li *ngFor="let b of bitacoraReciente" class="bitacora-item">
+      <div class="bitacora-contenido">
+        <strong>{{ b.usuario?.nombre || 'Sistema' }}:</strong> {{ b.accion }}
+        <br>
+        <small class="fecha">{{ b.fecha | date:'short' }}</small>
+      </div>
+    </li>
+  </ul>
+
+  <p *ngIf="bitacoraReciente.length === 0" class="sin-movimientos">
+    No hay movimientos recientes.
+  </p>
+</div>
+
+
 
 
 

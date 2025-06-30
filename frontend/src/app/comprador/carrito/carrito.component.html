@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orden de compras</title>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Registrar nueva compra</h2>
+
+        <label>Seleccione el proveedor:</label>
+        <select [(ngModel)]="nuevaCompra.proveedorId">
+        <option *ngFor="let p of proveedores" [value]="p._id">{{ p.nombre }}</option>
+        </select>
+
+        <label>Selecione la condicion de pago:</label>
+        <select [(ngModel)]="nuevaCompra.condicionesPago" >
+        <option value="Contado">Contado</option>
+        <option value="Credito">Credito</option>
+        <option value="Debito">Débito</option>
+        </select>
+
+        <hr>
+
+        <h3>Agregar productos</h3>
+        <label for="">Ingrese producto</label>
+        <select [(ngModel)]="productoSeleccionado">
+        <option *ngFor="let prod of productosDisponibles" [value]="prod._id">{{ prod.nombre }}</option>
+        </select>
+
+        <label for="">Ingrese la cantidad de producto</label>
+        <input type="number" [(ngModel)]="cantidad" placeholder="Cantidad">
+        <label for="">Ingrese el precio unitaria del producto</label>
+        <input type="number" [(ngModel)]="precioUnitario" placeholder="Precio unitario">
+        <button mat-button (click)="agregarProducto()">Agregar producto</button>
+
+        <ul>
+        <li *ngFor="let p of nuevaCompra.productos">
+            {{ p.productoId }} - {{ p.cantidad }} unidades a ${{ p.precioUnitario }} c/u
+        </li>
+        </ul>
+
+        <p>Total: ${{ nuevaCompra.total }}</p>
+
+        <button mat-button (click)="registrarCompra()">Registrar compra</button>
+
+
+    </div>
+    
+    
+</body>
+</html>

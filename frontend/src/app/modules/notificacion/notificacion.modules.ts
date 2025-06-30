@@ -4,11 +4,12 @@ import { ServicesBDService } from '../../services/services-bd.service';
 import { Alerta } from '../../interface/alerta';
 import { MatIcon } from '@angular/material/icon';
 import { NgClass } from '@angular/common';
+import { BitacoraComponent } from '../bitacora/bitacora.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatIcon, NgClass],
+  imports: [MatIcon, NgClass, BitacoraComponent],
   templateUrl: './notificacion.component.html',
   styleUrls: ['./notificacion.component.css']
 })
@@ -16,6 +17,7 @@ export class NotificacionComponent implements OnInit {
     mostrarAlerta: boolean = false;
   alertas: Alerta[] = [];
   mensajes : Alerta[] = [];
+  bitacoraReciente : any[] = []
   private yaCargado = false;
 
 
@@ -49,6 +51,19 @@ ngOnInit(): void {
       }
     });
   }
+  
+   this.db.getUltimaBitacora().subscribe({
+    next: (data) => {
+      // Convertir las fechas a objetos Date
+      this.bitacoraReciente = data.map(b => ({
+        ...b,
+        fecha: new Date(b.fecha)
+      }));
+      console.log('datos:', this.bitacoraReciente)
+    },
+    error: (err) => console.error('Error al cargar bitácora:', err)
+  });
+
 
 }
 

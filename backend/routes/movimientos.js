@@ -6,77 +6,32 @@ const { authenticateToken } = require('../middlewares/autenticateToken');
 const { authorizeRoles } = require('../middlewares/auth.middleware');
 const registrarEnBitacora = require('../services/bitacoralogger');
 
-router.get('/', async (req, res) => {
-    try{
-        console.log('🔍 DEBUGGING POPULATE');
-        
-        // 1. Ver documento raw
-        const sinPopulate = await Movimiento.find().limit(1);
-        console.log('📄 Sin populate:', JSON.stringify(sinPopulate[0], null, 2));
-        
-        // 2. VERIFICAR SI EXISTEN LOS DOCUMENTOS
-        if(sinPopulate[0]) {
-            console.log('🔄 Verificando existencia de documentos...');
-            
-            // Verificar Usuario
-            const usuarioExiste = await mongoose.model('Usuario').findById(sinPopulate[0].usuarioId);
-            console.log('👤 Usuario existe:', !!usuarioExiste);
-            if(usuarioExiste) {
-                console.log('👤 Usuario encontrado:', usuarioExiste.nombre);
-            } else {
-                console.log('❌ NO se encontró usuario con ID:', sinPopulate[0].usuarioId);
-            }
-            
-            // Verificar Producto
-            const productoExiste = await mongoose.model('Producto').findById(sinPopulate[0].producto_id);
-            console.log('📦 Producto existe:', !!productoExiste);
-            if(productoExiste) {
-                console.log('📦 Producto encontrado:', productoExiste.nombre);
-            } else {
-                console.log('❌ NO se encontró producto con ID:', sinPopulate[0].producto_id);
-            }
-        }
-        
-        // 3. Populate con manejo de errores
-        console.log('🔄 Intentando populate...');
-        const conPopulate = await Movimiento.find()
-            .populate({
-                path: 'usuario_id',
-                select: 'nombre',
-                options: { strictPopulate: false }
-            })
-            .populate({
-                path: 'producto_id',
-                select: 'nombre',
-                options: { strictPopulate: false }  
-            })
-            .limit(1);
-        
-        console.log('📄 Con populate:', JSON.stringify(conPopulate[0], null, 2));
-        
-        // 4. Para la respuesta final
-        const movimientos = await Movimiento.find()
-            .populate({
-                path: 'usuarioId',
-                select: 'nombre',
-                options: { strictPopulate: false }
-            })
-            .populate({
-                path: 'producto_id', 
-                select: 'nombre',
-                options: { strictPopulate: false }
-            });
-            
-        res.json(movimientos);
-    }catch (error){
-        console.error('❌ Error:', error);
-        res.status(500).json({mensaje: 'Error al obtener movimientos'})
-    }
+router.get('/', authenticateToken, authorizeRoles(['admin', 'gestor']), async (req, res) => {
+  try {
+    // Poblamos usuario_id y producto_id para obtener datos completos
+    const movimientos = await Movimiento.find()
+      .populate('usuario_id', 'nombre')
+      .populate('producto_id', 'nombre');
+
+    // Verificar movimientos sin usuario (debugging)
+    movimientos.forEach(m => {
+      if (!m.usuario_id) {
+        console.log('Movimiento sin usuario:', m._id);
+      }
+    });
+
+    res.json(movimientos);
+    console.log('Movimientos:', movimientos);
+    
+  } catch (error) {
+    console.error('Error al obtener movimientos:', error);
+    res.status(500).json({ message: 'Error al obtener movimientos', error });
+  }
 });
 
 //entrada de productos total
 
-router.get('/entrada/total', async (req, res) => {
+router.get('/entrada/total', authenticateToken, authorizeRoles(['admin', 'gestor']), async (req, res) => {
     try{
         const totalEntrada = await Movimiento.countDocuments({ tipo: "Entrada" });
         res.json({ totalEntrada});
@@ -88,7 +43,7 @@ router.get('/entrada/total', async (req, res) => {
 });
 
 //salida de productos total 
-router.get('/salida/total', async (req, res) => {
+router.get('/salida/total',authenticateToken, authorizeRoles(['admin', 'gestor']), async (req, res) => {
     try{
        const salidaTotal = await Movimiento.countDocuments({tipo: "Salida"})
        res.json({salidaTotal});
@@ -111,6 +66,7 @@ router.post('/', authenticateToken, authorizeRoles(['admin', 'gestor']), async (
     console.log('🟢 Iniciando POST');
     console.log('Body recibido:', req.body);
     console.log('Usuario desde token:', req.user);
+    
 
     // Crear nuevo movimiento
     const nuevo = new Movimiento({

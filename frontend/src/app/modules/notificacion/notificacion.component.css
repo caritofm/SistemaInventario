@@ -75,3 +75,50 @@ h3{
 mat-icon{
   color: orange !important;
 }
+
+
+
+.bitacora-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.bitacora-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bitacora-item {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s;
+}
+
+.bitacora-item:hover {
+  background-color: #f9f9f9;
+}
+
+.bitacora-contenido {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.fecha {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.sin-movimientos {
+  font-style: italic;
+  color: #999;
+}
+

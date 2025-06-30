@@ -36,8 +36,40 @@
                     </div>
                 </div>
     </div>
-    <div class="dashboard" *ngIf="usuarioRol === 'gestor'">
+    <div class="dashboard-gestor" *ngIf="usuarioRol === 'gestor'">
         <h4 class="dashboard-title" >Hola, {{usuarioNombre}} Bienvenid{{'@'}} </h4>
+
+        <div class="dashboard-card">
+            <mat-card class="card-agregar">
+            <mat-card-title class="title">Agregar Producto</mat-card-title>
+            <mat-card-content class="card-content">
+                <button mat-icon-button style="color: white;"  matTooltip="Agregar productos" routerLink="/add-product">
+                    <mat-icon >add</mat-icon>
+                </button>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card-agregar">
+            <mat-card-title class="title">Solicitar compra</mat-card-title>
+            <mat-card-content class="card-content">
+                <button mat-icon-button color="primary" matTooltip="Solicitar compras"  routerLink="/carrito">
+                    <mat-icon style="color: white;" >add_shopping_cart</mat-icon>
+                </button>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card-agregar">
+            <mat-card-title class="title"> Lista Productos</mat-card-title>
+            <mat-card-content class="card-content">
+                <button mat-icon-button color="primary" matTooltip="Lista de productos"  routerLink="/delete-product">
+                    <mat-icon style="color: white;" >list_alt</mat-icon>
+                </button>
+            </mat-card-content>
+        </mat-card>
+       
+
+        </div>
+
+        
+
     </div>
 
         <app-notificacion></app-notificacion>

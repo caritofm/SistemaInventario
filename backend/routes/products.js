@@ -34,6 +34,7 @@ const fileFilter = (req, file, cb) => {
 };
 
 const upload = multer({ storage, fileFilter });
+// En tu servicio backend
 
 // RUTA: Obtener todos los productos
 router.get('/', async (req, res) => {
@@ -43,19 +44,36 @@ router.get('/', async (req, res) => {
       .populate('ubicacion', 'nombreUbicacion');
 
     const alertas = [];
+    const hoy = new Date();
+    const proximamente = new Date();
+    proximamente.setDate(hoy.getDate() + 30);
 
     productos.forEach(p => {
-      if (p.stock <= p.stockmin) {
-        alertas.push({ tipo: 'stock_bajo', mensaje: `Stock bajo ${p.nombre}` });
+      if (typeof p.stock === 'number' && typeof p.stockmin === 'number' && p.stock <= p.stockmin) {
+        alertas.push({ tipo: 'stock_bajo', mensaje: `Stock bajo: ${p.nombre}` });
+      }
+
+      if (p.fechaVencimiento && !isNaN(Date.parse(p.fechaVencimiento))) {
+        const vencimiento = new Date(p.fechaVencimiento);
+        if (vencimiento <= proximamente) {
+          alertas.push({ tipo: 'vencimiento_proximo', mensaje: `¡${p.nombre} vence pronto!` });
+        }
       }
     });
 
     res.json({ productos, alertas });
   } catch (error) {
-    console.error('❌ Error al obtener productos:', error);
-    res.status(500).json({ mensaje: 'Error al obtener productos' });
+    console.error('❌ Error al obtener productos:', error.message);
+    res.status(500).json({ mensaje: 'Error al obtener productos', error: error.message });
   }
 });
+
+
+
+
+
+
+
 
 // GET /productos/categoria/:id
 router.get('/categoria/:id',authenticateToken,              
@@ -142,34 +160,62 @@ router.post('/',
         return res.status(400).json({ mensaje: 'La categoría especificada no existe.' });
       }
 
+      // Calcular fecha de vencimiento automática según la categoría
+      let fechaVencimiento = null;
+      const nombreCategoria = categoriaExiste.nombreCategoria?.trim().toLowerCase();
+      
+      console.log('Nombre de categoría original:', categoriaExiste.nombreCategoria);
+      console.log('Nombre de categoría procesado:', nombreCategoria);
+      console.log('Comparación con lubricantes:', nombreCategoria === 'lubricantes');
+      
+      // Usar includes() para ser más flexible con la comparación
+      if (nombreCategoria.includes('lubricante')) {
+        const hoy = new Date();
+        hoy.setMonth(hoy.getMonth() + 3); // Vencimiento en 3 meses
+        fechaVencimiento = hoy;
+        console.log('✅ Fecha de vencimiento calculada para lubricantes:', fechaVencimiento);
+      }else {
+        console.log('❌ No se encontró coincidencia para la categoría:', nombreCategoria);
+      }
+      
+      console.log('Fecha de vencimiento final:', fechaVencimiento);
+
+      // Crear el nuevo producto
       const nuevoProducto = new Producto({
         categoria: categoriaExiste._id,
         codigo,
         nombre,
-        stock: parseInt(stock), // ✅ CORREGIDO
+        stock: parseInt(stock), 
         ubicacion,
+        fechaVencimiento, // Esto debería guardarse correctamente ahora
         foto
       });
 
+      console.log('Producto antes de guardar:', nuevoProducto);
 
+      // Guardar el producto (SIN la 'w' extra)
       await nuevoProducto.save();
-    
+
+      // Registrar en bitácora
       await registrarEnBitacora({
         usuario: req.user.nombre,
-        accion: 'crear_producto',
+        accion: 'Se creo producto',
         producto: nuevoProducto._id,
         detalle: `Producto creado: ${nombre}, código: ${codigo}`
       });
 
-
+      // Obtener el producto completo con las relaciones pobladas
       const productoConCategoria = await Producto.findById(nuevoProducto._id)
         .populate('categoria')
         .populate('ubicacion');
 
+      console.log('Producto guardado exitosamente:', productoConCategoria);
+      
       res.status(201).json(productoConCategoria);
 
     } catch (error) {
-      console.error('Error al guardar producto:', error.message);
+      console.error('❌ Error al guardar producto:', error.message);
+      console.error('Stack trace:', error.stack);
       res.status(500).json({ mensaje: 'Error al guardar producto', error: error.message });
     }
   }

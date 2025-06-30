@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Ubicacion = require('../models/ubication.js');
 const ubicationData = require('../assets/data/ubication.json');
+const { authenticateToken } = require('../middlewares/autenticateToken');
+const { authorizeRoles } = require('../middlewares/auth.middleware');
 
 // Obtener todas las ubicaciones desde la base de datos
-router.get('/', async (req, res) => {
+router.get('/', authenticateToken, authorizeRoles(['admin', 'gestor']), async (req, res) => {
   try {
     const ubicacion = await Ubicacion.find({});
     res.json(ubicacion);
@@ -16,7 +18,7 @@ router.get('/', async (req, res) => {
 
 
 
-router.get('/ubicaciones', async (req, res) => {
+router.get('/ubicaciones', authenticateToken, authorizeRoles(['admin', 'gestor']), async (req, res) => {
   try {
     const ubicaciones = await Ubicacion.find().populate('categoria', 'nombreCategoria');
     console.log('Ubicaciones obtenidas', ubicaciones)
@@ -28,7 +30,7 @@ router.get('/ubicaciones', async (req, res) => {
 
 
 
-router.get('/cargar', async (req, res) => {
+router.get('/cargar', authenticateToken, authorizeRoles(['admin', 'gestor']), async (req, res) => {
   try {
     let insertadas = 0;
     for (const ubi of ubicationData) {
@@ -48,7 +50,7 @@ router.get('/cargar', async (req, res) => {
 
 
 
-router.post('/cargar', async (req, res) => {
+router.post('/cargar', authenticateToken, authorizeRoles(['admin', 'gestor']), async (req, res) => {
   try {
     let insertadas = 0;
     for (const ubi of ubicationData) {

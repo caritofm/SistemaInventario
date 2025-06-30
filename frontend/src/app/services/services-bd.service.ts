@@ -23,11 +23,8 @@ export class ServicesBDService {
   private apiURLProveedores = 'http://localhost:3000/api/proveedores';
   private apiURLMovimientos = 'http://localhost:3000/api/movimientos';
   private apiURLBitacora = 'http://localhost:3000/api/bitacora';
-  
-  
-
-
-
+  private apiURLOrdenCompras = 'http://localhost:3000/api/ordenCompra';
+  private apiURLRecepcionCompra = 'http://localhost:3000/api/recepcion';
   constructor(private http: HttpClient) { }
 
   getProductos(): Observable<Producto[]> {
@@ -51,9 +48,6 @@ getTotalProductos(){
 getStockTotal() {
   return this.http.get<{ totalStock: number }>('http://localhost:3000/api/productos/stock-total');
 }
-
-
-
   addProducto(producto: FormData): Observable<Producto> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -85,29 +79,30 @@ getStockTotal() {
 
   //obtener las categorias 
   getCategorias():Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(this.apiURLCategoria).pipe(
+      const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Categoria[]>(this.apiURLCategoria, {headers}).pipe(
       catchError(this.handleError)
     )
 
   }
-
   //obtener ubicacion
-
   getUbicacion():Observable<Ubicacion[]>{
-    return this.http.get<Ubicacion[]>(this.apiURLUbicacion).pipe(
+      const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Ubicacion[]>(this.apiURLUbicacion, {headers}).pipe(
       catchError(this.handleError)
     )
   }
-
-
   //crear solicitud de materiales 
 
   CrearSolicitud(data: Solicitud): Observable<any> {
-  return this.http.post<any>(this.apiURLSolicitud, data).pipe(
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.post<any>(this.apiURLSolicitud, data, {headers}).pipe(
     catchError(this.handleError)
   );
 }
-
   //obtener Solicitudes
 
   getSolicitudes():Observable<Solicitud[]>{
@@ -129,7 +124,9 @@ addProveedores(proveedor: FormData):Observable<Proveedores>{
 //obtener proveedores 
 
 getProveedores():Observable <Proveedores[]>{
-  return this.http.get<Proveedores[]>(this.apiURLProveedores).pipe(
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<Proveedores[]>(this.apiURLProveedores, {headers}).pipe(
     catchError(this.handleError)
   )
 }
@@ -149,11 +146,15 @@ getMovimientos(){
 }
 
 getTotalEntrada(){
-  return this.http.get<{totalEntrada: number}>('http://localhost:3000/api/movimientos/entrada/total');
+    const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<{totalEntrada: number}>('http://localhost:3000/api/movimientos/entrada/total', {headers});
 }
 
 getTotalSalida(){
-  return this.http.get<{salidaTotal: number}>('http://localhost:3000/api/movimientos/salida/total')
+    const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<{salidaTotal: number}>('http://localhost:3000/api/movimientos/salida/total', {headers})
 }
 
 deleteSolicitud(id:string){
@@ -170,7 +171,9 @@ rechazarSolicitud(id: string) {
 }
 
 getTotalSolicitudes() {
-  return this.http.get<{ totalSolicitudes: number }>('http://localhost:3000/api/solicitud/total');
+    const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<{ totalSolicitudes: number }>('http://localhost:3000/api/solicitud/total', {headers});
 }
 
 getNotificacionesPorUsuario(usuario_id: string):Observable<Alerta[]> {
@@ -187,8 +190,37 @@ obtenerBitacora(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiURL}/categoria/${categoriaId}`, {headers});
   }
     getUbicaciones() {
-    return this.http.get<any[]>(`${this.apiURLUbicacion}/ubicaciones`);
+        const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any[]>(`${this.apiURLUbicacion}/ubicaciones`, {headers});
   }
+  getFechaVencimiento(){
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<{ productos: Producto[] }>(`${this.apiURL}`, {headers});
+}
+
+crearCompra(data: any){
+  return this.http.post(`${this.apiURLOrdenCompras}`, data)
+}
+
+getCompras() {
+  return this.http.get<any[]>(`${this.apiURLOrdenCompras}`);
+}
+
+aprobarCompra(id: string) {
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.put(`${this.apiURLOrdenCompras}/aprobar/${id}`, {}, {headers});
+}
+
+getUltimaBitacora() {
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<any[]>(`${this.apiURLBitacora}/ultimas`,{headers});
+}
+
+
 
 
 

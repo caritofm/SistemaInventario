@@ -42,7 +42,9 @@ mongoose.connect('mongodb+srv://carolfloresm:0VBajr2eLL8CacgJ@cluster0.hgmgeel.m
     app.use('/api/notificaciones', require('./routes/notificacions'));
     app.use('/api/lote', require('./routes/lote'));
     app.use('/api/kit', require('./routes/kit'));
-    app.use('/api/bitacora', require('./routes/bitacora'))
+    app.use('/api/bitacora', require('./routes/bitacora'));
+    app.use('/api/ordenCompra', require('./routes/compras'));
+    app.use('/api/recepcion', require('./routes/recepcionCompra'));
     
 
 

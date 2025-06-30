@@ -27,6 +27,16 @@ export const routes: Routes = [
           import('./modules/informe/informe.component').then(m => m.InformeComponent),
       },
       {
+        path:'carrito',
+        loadComponent:() => 
+          import('./comprador/carrito/carrito.component').then(m => m.CarritoComponent),
+      },
+        {
+        path:'productos',
+        loadComponent:() =>
+          import('./comprador/productos/productos.component').then(m => m.ProductosComponent),
+        },
+      {
         path:'ubicacion-categoria',
         canActivate:[authGuard],
         loadComponent:() =>

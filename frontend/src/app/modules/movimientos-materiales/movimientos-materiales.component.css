@@ -8,7 +8,7 @@ form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Títulos */
+
 h2 {
   text-align: center;
   color: var(--clr-blue-dark);
@@ -37,7 +37,7 @@ select {
   font-size: 1rem;
   box-sizing: border-box;
   color: white;
-  background-color: var(--clr-blue-blue);
+  background-color: var(--clr-blue-blue) !important;
   text-align: center;
   font-family: var(--font-family);
 }
@@ -55,15 +55,12 @@ button[type="submit"] {
   font-weight: bold;
   font-family: var(--font-family);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+    background-color: var(--clr-blue-dark);
+
 }
 
 
 
-button[disabled] {
-  background-color: var(--clr-blue-dark);
-  cursor: pointer;
-}
 
 /* Información de usuario */
 .usuario-info {

@@ -26,7 +26,7 @@
       <td>{{ m.tipo }}</td>
       <td>{{ m.cantidad }}</td>
       <td>{{ m.motivo || '-' }}</td>
-      <td>{{ usuarioNombre}}</td>  <!-- Debería mostrar "Javier" -->
+      <td>{{ m.usuario_id?.nombre}}</td>  <!-- Debería mostrar "Javier" -->
     </tr>
   </tbody>
 </table>

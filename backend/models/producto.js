@@ -13,6 +13,7 @@ const productoSchema = new mongoose.Schema({
         ref:'Ubicacion',
         required:true
     },
+    fechaVencimiento: {type:Date, default:null},
     foto: {type:String}
 
 },{

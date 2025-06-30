@@ -13,5 +13,17 @@ router.get('/', authenticateToken,authorizeRoles(['admin']), async (req, res) =>
     res.status(500).json({ mensaje: 'Error al obtener bitácora' });
   }
 });
+router.get('/ultimas',authenticateToken,authorizeRoles(['admin']), async (req, res) => {
+  try {
+    const ultimas = await Bitacora.find()
+      .populate('usuario', 'nombre') // si quieres mostrar nombre del usuario
+      .sort({ fecha: -1 })            // ordenar por fecha descendente
+      .limit(5);                      // solo 5 registros
+    res.json(ultimas);
+  } catch (error) {
+    console.error('Error al obtener últimas acciones:', error);
+    res.status(500).json({ mensaje: 'Error al obtener historial' });
+  }
+});
 
 module.exports = router;

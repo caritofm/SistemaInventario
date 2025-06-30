@@ -27,12 +27,9 @@ export class VerMovimientosComponent {
   };
 
   ngOnInit() {
-    this.usuarioId = localStorage.getItem('_id') || 'Id no identificado'; // 🔧 corregido
-    this.usuarioNombre = localStorage.getItem('usuarioNombre') || 'Nombre no identificado';
-    this.nuevoMovimiento.usuario_id = this.usuarioId;
+
    
 
-  console.log('Usuario:', this.usuarioNombre, 'ID:', this.usuarioId);
 
     this.db.getMovimientos().subscribe({
       next: res => {
@@ -41,6 +38,22 @@ export class VerMovimientosComponent {
       },
       error: err => console.error('Error cargando movimientos:', err)
     });
+  }
+
+  obtenerNombreUsuario(movimiento: any): string {
+    if (movimiento.usuarioNombre) {
+      return movimiento.usuarioNombre;
+    }
+    
+    if (movimiento.usuario_id && typeof movimiento.usuario_id === 'object') {
+      return movimiento.usuario_id.nombre || 'Usuario desconocido';
+    }
+    
+    if (movimiento.usuario_id) {
+      return `Usuario ID: ${movimiento.usuario_id}`;
+    }
+    
+    return 'Sin usuario';
   }
 
 }

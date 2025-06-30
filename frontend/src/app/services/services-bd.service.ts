@@ -28,25 +28,35 @@ export class ServicesBDService {
   constructor(private http: HttpClient) { }
 
   getProductos(): Observable<Producto[]> {
-  return this.http.get<{productos: Producto[], alertas: any[]}>(this.apiURL).pipe(
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`,);
+  return this.http.get<{productos: Producto[], alertas: any[]}>(this.apiURL, {headers}).pipe(
     map(res => res.productos)
   );
 }
 
   getProductosConAlertas(): Observable<{productos: Producto[], alertas : Alerta[]}>{
-    return this.http.get<{productos: Producto [], alertas: Alerta[]}>(this.apiURL)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<{productos: Producto [], alertas: Alerta[]}>(this.apiURL, {headers})
   }
   getProductoPorId(id: string): Observable<Producto> {
-  return this.http.get<Producto>(`${this.apiURL}/${id}`);
+    const token = localStorage.getItem('token');
+   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<Producto>(`${this.apiURL}/${id}`, {headers});
 }
 
 getTotalProductos(){
-  return this.http.get<{ total: number }>('http://localhost:3000/api/productos/total');
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<{ total: number }>('http://localhost:3000/api/productos/total', {headers});
 
 }
 
-getStockTotal() {
-  return this.http.get<{ totalStock: number }>('http://localhost:3000/api/productos/stock-total');
+getStockTotal() {    
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<{ totalStock: number }>('http://localhost:3000/api/productos/stock-total', {headers});
 }
   addProducto(producto: FormData): Observable<Producto> {
     const token = localStorage.getItem('token');
@@ -116,7 +126,9 @@ getStockTotal() {
 }
 //guardar proveedores
 addProveedores(proveedor: FormData):Observable<Proveedores>{
-  return this.http.post<Proveedores>(this.apiURLProveedores, proveedor).pipe(
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.post<Proveedores>(this.apiURLProveedores, proveedor, {headers}).pipe(
     catchError(this.handleError)
   )
 }

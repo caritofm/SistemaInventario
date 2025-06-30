@@ -5,10 +5,11 @@ const Producto = require('../models/producto');
 const Bitacora = require('../models/bitacora');
 const Bitacoralogger = require('../services/bitacoralogger');
 const { authenticateToken } = require('../middlewares/autenticateToken');
+const { authorizeRoles } = require('../middlewares/auth.middleware');
 const Notificacion = require('../models/notificacion');
 
 // 📌 Ruta para registrar nueva compra
-router.post('/', async (req, res) => {
+router.post('/', authenticateToken,authorizeRoles(['admin','gestor']), async (req, res) => {
   try {
     const nuevaCompra = new Compra(req.body);
     await nuevaCompra.save();
@@ -20,7 +21,7 @@ router.post('/', async (req, res) => {
 });
 
 // 📌 Ruta para aprobar compra (actualiza stock y registra movimientos)
-router.put('/aprobar/:id',authenticateToken, async (req, res) => {
+router.put('/aprobar/:id',authenticateToken, authorizeRoles(['admin','gestor']), async (req, res) => {
   try {
     const compra = await Compra.findById(req.params.id);
     if (!compra) return res.status(404).json({ mensaje: 'Compra no encontrada' });
@@ -70,7 +71,7 @@ router.put('/aprobar/:id',authenticateToken, async (req, res) => {
 });
 
 // 📌 Ruta para obtener compras
-router.get('/', async (req, res) => {
+router.get('/', authenticateToken, authorizeRoles(['admin','gestor']), async (req, res) => {
   try {
     const compras = await Compra.find()
       .populate('proveedorId', 'nombre')

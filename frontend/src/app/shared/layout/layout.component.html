@@ -23,6 +23,13 @@
           <a routerLink="/ver-movimientos">Ver movimientos de producto</a>
         </div>
       </li>
+       <li class="nav-item dropdown" id="productos-dropdown" *ngIf="role === 'admin' || role === 'gestor'">
+        <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Proveedores</button>
+        <div class="dropdown-content">
+          <a routerLink="/provedores">Ingresar proveedores</a>
+          <a routerLink="/lista-provedores">Todos proveedores</a>
+        </div>
+      </li>
       <li class="nav-item dropdown" id="productos-dropdown" *ngIf="role === 'admin' || role === 'gestor'">
         <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Ubicaciones</button>
         <div class="dropdown-content">

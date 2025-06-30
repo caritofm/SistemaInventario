@@ -17,6 +17,7 @@ export const routes: Routes = [
       },
       {
         path:'bitacora',
+        canActivate:[authGuard],
         loadComponent:() =>
           import('./modules/bitacora/bitacora.component').then(m => m.BitacoraComponent),
       },
@@ -28,11 +29,13 @@ export const routes: Routes = [
       },
       {
         path:'carrito',
+        canActivate:[authGuard],
         loadComponent:() => 
           import('./comprador/carrito/carrito.component').then(m => m.CarritoComponent),
       },
         {
         path:'productos',
+        canActivate:[authGuard],
         loadComponent:() =>
           import('./comprador/productos/productos.component').then(m => m.ProductosComponent),
         },
@@ -119,25 +122,8 @@ export const routes: Routes = [
         canActivate:[authGuard],
         loadComponent: () =>
           import('./modules/notificacion/notificacion.component').then(m => m.NotificacionComponent),
-      },
-      {
-        path: 'control-energia',
-        canActivate:[authGuard],
-        loadComponent: () =>
-          import('./modules/control-energia/control-energia.component').then(m => m.ControlEnergiaComponent),
-      },
-      {
-        path: 'produccion-embalaje',
-        canActivate:[authGuard],
-        loadComponent: () =>
-          import('./modules/produccion-embalaje/produccion-embalaje.component').then(m => m.ProduccionEmbalajeComponent),
-      },
-      {
-        path: 'programar-embalaje',
-        canActivate:[authGuard],
-        loadComponent: () =>
-          import('./modules/programar-embalaje/programar-embalaje.component').then(m => m.ProgramarEmbalajeComponent),
       }
+      
     ]
   },
 

@@ -2,22 +2,29 @@ const Proveedor = require('../models/proveedores');
 
 exports.crearProveedor = async (req, res) => {
   try {
-    // Parsear el contacto que viene como texto JSON
-    if (typeof req.body.contacto === 'string') {
-      req.body.contacto = JSON.parse(req.body.contacto);
-    }
-    
-    const nuevoProveedor = new Proveedor(req.body);
-    console.log('parse', nuevoProveedor)
-    console.log('Proveedores', req.body);
+    const proveedorData = {
+      nombre: req.body.nombre,
+      rut: req.body.rut,
+      direccion: req.body.direccion,
+      contacto: {
+        nombre: req.body.contactoNombre,
+        email: req.body.contactoEmail,
+        telefono: req.body.contactoTelefono,
+      },
+      terminosPago: req.body.terminosPago,
+    };
+
+    const nuevoProveedor = new Proveedor(proveedorData);
+    console.log('Proveedor a guardar:', nuevoProveedor);
     await nuevoProveedor.save();
+
     res.status(201).json(nuevoProveedor);
-    
   } catch (error) {
     console.error('Error guardando proveedor:', error);
     res.status(400).json({ mensaje: 'Error al crear proveedor', error });
   }
 };
+
 
 
 // Obtener todos los proveedores

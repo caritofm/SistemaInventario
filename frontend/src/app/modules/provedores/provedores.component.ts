@@ -28,17 +28,12 @@ export class ProvedoresComponent {
       terminosPago: 'Contado'
     
   };
+  provedor : any [] = []
 
   terminos: string[] = ['Contado', 'Debito', '30 dias credito']
 
-  guardarProveedorr() {
-  console.log('Datos proveedor a enviar:', this.proveedor);
-  this.http.post('http://localhost:3000/api/proveedores', this.proveedor)
-    .subscribe(
-      res => console.log('Proveedor creado:', res),
-      err => console.error('Error al crear proveedor:', err)
-    );
-}
+ 
+
 
 
   guardarProveedor() {
@@ -55,12 +50,15 @@ export class ProvedoresComponent {
     alert('Por favor completa todos los campos del proveedor.');
     return;
   }
+  const formData = new FormData();
+  formData.append('nombre', this.proveedor.nombre);
+  formData.append('rut', this.proveedor.rut);
+  formData.append('direccion', this.proveedor.direccion);
+  formData.append('contactoNombre', this.proveedor.contacto.nombre);
+  formData.append('contactoEmail', this.proveedor.contacto.email);
+  formData.append('contactoTelefono', this.proveedor.contacto.telefono);
+  formData.append('terminosPago', this.proveedor.terminosPago); // no olvides este campo si lo usas
 
- const formData = new FormData();
-formData.append('nombre', this.proveedor.nombre);
-formData.append('rut', this.proveedor.rut);
-formData.append('direccion', this.proveedor.direccion);
-formData.append('contacto', JSON.stringify(this.proveedor.contacto));
 
 
   this.db.addProveedores(formData).subscribe({

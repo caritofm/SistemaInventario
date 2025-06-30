@@ -61,6 +61,16 @@
   transform: scale(1.05);
 }
 
+.dashboard-admin{
+   display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+
+}
+
 .dashboard-card{
   display: flex;
   justify-content: center;
@@ -101,5 +111,34 @@
   width: 100%;
   color: white !important; /* azul primario */
 }
+
+.card-agregar {
+  width: 200px;              
+  height: 150px;             
+  background-color: #64b9cc;
+  color: white;
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin: 10px;            
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 10px;
+  text-align: center;
+}
+
 
 

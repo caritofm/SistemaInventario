@@ -10,30 +10,38 @@
         <div class="dashboard" *ngIf="usuarioRol==='admin'">
             <div class="dashboard-container">
             <h4 class="dashboard-title">Hola {{usuarioNombre}} Bienvenid{{'@'}}</h4>
+            <div class="dashboard-admin">
+                <mat-card class="card-agregar">
+                    <mat-card-title class="title">Productos stock</mat-card-title>
+                    <mat-card-content class="card-content">
+                        <p>{{totalProductos}}</p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="card-agregar">
+                    <mat-card-title class="title">Entradas producto</mat-card-title>
+                    <mat-card-content class="card-content">
+                        <p>{{entradaTotal}}</p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="card-agregar">
+                    <mat-card-title class="title">Salida producto</mat-card-title>
+                    <mat-card-content class="card-content">
+                        <p>{{totalSalida}}</p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="card-agregar">
+                    <mat-card-title class="title">Solicitud materiales</mat-card-title>
+                    <mat-card-content class="card-content">
+                        <button mat-icon-button style="color: white;"  matTooltip="Solicitud de materiales" routerLink="/add-product">
+                            <p>{{totalPendientes}}</p>
+                        </button>
+                    </mat-card-content>
+                </mat-card>
 
-                    <div class="card yellow">
-                    <i class="fas fa-box"></i>
-                    <h3>Productos</h3>
-                    <p>{{ totalProductos }}</p>
-                    </div>
+            </div>
 
-                    <div class="card green">
-                    <i class="fas fa-arrow-left"></i>
-                    <h3>Entradas</h3>
-                    <p>{{entradaTotal}}</p>
-                    </div>
 
-                    <div class="card red">
-                    <i class="fas fa-arrow-right"></i>
-                    <h3>Salidas</h3>
-                    <p>{{ totalSalida }}</p>
-                    </div>
-
-                    <div class="card red">
-                    <i class="fas fa-arrow-right"></i>
-                    <h3 routerLink="/ver-solicitud">Solicitudes</h3>
-                    <p>{{ totalPendientes}}</p>
-                    </div>
+                    
                 </div>
     </div>
     <div class="dashboard-gestor" *ngIf="usuarioRol === 'gestor'">

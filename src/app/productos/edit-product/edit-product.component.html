@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div class="container">
+  <h1 class="main-title">Modificar Producto</h1>
+  
+  <form (ngSubmit)="guardarCambios()" #productForm="ngForm" *ngIf="producto">
+    
+    <!-- Código del producto -->
+    <div class="input-group">
+      <label class="input-label">Código</label>
+      <div class="input-field">
+        <input 
+          class="custom-input"
+          type="text"
+          [(ngModel)]="producto.codigo" 
+          name="codigo"
+          required
+          placeholder="Código del producto">
+        <mat-icon class="edit-icon">edit</mat-icon>
+      </div>
+    </div>
+
+    <!-- Nombre del producto -->
+    <div class="input-group">
+      <label class="input-label">Nombre</label>
+      <div class="input-field">
+        <input 
+          class="custom-input"
+          type="text"
+          [(ngModel)]="producto.nombre" 
+          name="nombre"
+          required
+          placeholder="Nombre del producto">
+        <mat-icon class="edit-icon">edit</mat-icon>
+      </div>
+    </div>
+    
+    <!-- Stock -->
+    <div class="input-group">
+      <label class="input-label">Stock</label>
+      <div class="input-field">
+        <input 
+          class="custom-input"
+          type="number"
+          [(ngModel)]="producto.stock" 
+          name="stock"
+          required
+          min="0"
+          placeholder="Cantidad en stock">
+        <mat-icon class="edit-icon">edit</mat-icon>
+      </div>
+    </div>
+
+    <!-- Categoría -->
+    <div class="input-group">
+      <label class="input-label">Categoría</label>
+      <div class="input-field">
+        <select 
+          class="custom-select"
+          [(ngModel)]="categoriaSeleccionada" 
+          name="categoriaSelect"
+          (change)="onCategoriaChange()">
+          <option value="" disabled>{{ getNombreCategoria(producto.categoria) }}</option>
+          <option 
+            *ngFor="let categoria of categorias" 
+            [value]="categoria._id">
+            {{ categoria.nombreCategoria }}
+          </option>
+        </select>
+        <mat-icon class="edit-icon">edit</mat-icon>
+      </div>
+    </div>
+
+
+     <!--Ubicacion-->
+    <div class="input-group">
+        <label class="input-label">Ubicación</label>
+        <div class="input-field">
+            <select
+            class="custom-select"
+            [(ngModel)]="producto.ubicacion"
+            name="ubicacion">
+                <option *ngFor="let ubi of ubicacion" [value]="ubi._id">
+                {{ ubi.nombreUbicacion }}
+                </option>
+            </select>
+            <mat-icon class="edit-icon">edit</mat-icon>
+
+        </div>
+    </div>
+
+
+    <!-- Imagen del producto -->
+    <div class="imagen-section" *ngIf="producto.foto">
+      <label class="imagen-label">Imagen</label>
+      <div class="image-container">
+        <img 
+          [src]="'http://localhost:3000/uploads/' + producto.foto" 
+          [alt]="'Imagen de ' + producto.nombre"
+          class="product-image" />
+      </div>
+    </div>
+
+    <!-- Botón guardar -->
+    <button 
+      class="save-button"
+      type="submit"
+      [disabled]="!productForm.form.valid">
+      Guardar Cambios
+    </button>
+
+  </form>
+
+ 
+
+</div>
+    
+</body>
+</html>

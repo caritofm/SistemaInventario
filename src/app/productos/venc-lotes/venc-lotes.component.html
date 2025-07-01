@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos Vencimiento</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Productos con Fecha de Vencimiento</h2>
+
+    <mat-table [dataSource]="productosVec" class="mat-elevation-z2">
+
+      <!-- Código -->
+      <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
+        <mat-cell *matCellDef="let lote"> {{ lote.codigo }} </mat-cell>
+      </ng-container>
+
+      <!-- Descripción -->
+      <ng-container matColumnDef="descripcion">
+        <mat-header-cell *matHeaderCellDef> Descripción </mat-header-cell>
+        <mat-cell *matCellDef="let lote"> {{ lote.nombre}} </mat-cell>
+      </ng-container>
+
+      <!-- Fecha de Creación -->
+      <ng-container matColumnDef="fechaCreacion">
+        <mat-header-cell *matHeaderCellDef> Creación </mat-header-cell>
+        <mat-cell *matCellDef="let lote"> {{ lote.createdAt | date:'shortDate' }} </mat-cell>
+      </ng-container>
+
+      <!-- Fecha de Vencimiento -->
+      <ng-container matColumnDef="fechaVencimiento">
+        <mat-header-cell *matHeaderCellDef> Vencimiento </mat-header-cell>
+        <mat-cell *matCellDef="let lote"> {{ lote.fechaVencimiento | date:'shortDate' }}</mat-cell>
+      </ng-container>
+
+      <!-- Estado -->
+      <ng-container matColumnDef="estado">
+        <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+        <mat-cell *matCellDef="let lote">
+          <span [ngClass]="getEstadoClass(lote)">
+            {{ getEstadoTexto(lote) }}
+          </span>
+        </mat-cell>
+      </ng-container>
+
+   
+
+      <!-- Encabezados y Filas -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+mat-table {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: var(--font-family);
+}
+
+mat-header-cell, mat-cell {
+  padding: 12px 16px;
+  text-align: center;
+  font-family: var(--font-family);
+  font-size: 14px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+h2{
+    font-family: var(--font-family);
+    text-align: center;
+    color: #5fa8d3;
+}
+
+:host ::ng-deep mat-header-cell{
+    background-color: #1b4965 !important;
+    color: white;
+}
+
+
+body{
+    font-family: var(--font-family);
+}
+
+mat-header-row{
+    background-color: #1b4965;
+    font-weight: bold;
+}
+
+mat-row:nth-child(even){
+    background-color: #62b6cb;
+}
+
+mat-row:hover{
+    background-color: #daf0ee;
+}

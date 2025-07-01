@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="container">
+        <div class="card">
+            <div class="titulo">
+                <h2>Agregar Productos</h2>
+            </div>
+            
+            <form>
+                <div class="form-field">
+                    <label for="codigo">Código:</label>
+                    <input 
+                        type="text" 
+                        id="codigo"
+                        placeholder="Ingrese el código del producto" 
+                        [(ngModel)]="nuevoProducto.codigo"
+                        name="codigo"
+                        required>
+                </div>
+
+                <div class="form-field">
+                    <label for="descripcion">Nombre:</label>
+                    <input 
+                        type="text" 
+                        id="descripcion"
+                        placeholder="Ingrese una breve descripción del producto" 
+                        [(ngModel)]="nuevoProducto.nombre" 
+                        name="nombre" 
+                        required>
+                </div>
+
+                <div class="form-field">
+                    <label for="categoria" class="form-label">Categoría:</label>
+                    <select class="form-select custom-select" id="categoria" [(ngModel)]="nuevoProducto.categoria" name="categoria" aria-label="Small select example">
+                        <option value="" disabled selected>Seleccione una categoría</option>
+                        <option *ngFor="let cat of categorias" [value]="cat._id">{{cat.nombreCategoria}}</option>
+                    </select>
+
+                </div>
+                <div class="form-field">
+                    <label for="ubicacion" class="form-label">Ubicación:</label>
+                    <select
+                        class="form-select custom-select"
+                        id="ubicacion"
+                        [(ngModel)]="nuevoProducto.ubicacion"
+                        name="ubicacion"
+                        aria-label="Seleccionar ubicación"
+                    >
+                        <option [ngValue]="''" disabled>Seleccione una ubicación</option>
+                        <option *ngFor="let ubi of ubicacions" [ngValue]="ubi._id">{{ ubi.nombreUbicacion }}:{{ubi.descripcion}}</option>
+                    </select>
+                </div>
+
+
+                <div class="form-field">
+                    <label for="stock">Stock:</label>
+                    <input 
+                        type="number" 
+                        id="stock"
+                        placeholder="Ingrese el stock del producto" 
+                        [(ngModel)]="nuevoProducto.stock"
+                        name="stock"
+                        min="0"
+                        required>
+                </div>
+                <div class="form-image">
+                    <label>Imagen del producto:</label>
+                    <div class="file-input-wrapper">
+                        <input 
+                            type="file" 
+                            id="foto" 
+                            (change)="onFileSelected($event)" 
+                            accept="image/*" 
+                            class="file-input">
+                        <div class="file-input-button">
+                            <i class="material-icons">cloud_upload</i>
+                            Seleccionar imagen
+                        </div>
+                    </div>
+                    
+                    <!-- Vista previa de la imagen -->
+                    <div class="image-preview" *ngIf="imagePreview">
+                        <img [src]="imagePreview" alt="Vista previa del producto">
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button 
+                        type="button"
+                        class="add-button"
+                        (click)="agregarProducto()">
+                        <i class="material-icons">add</i>
+                        Agregar Producto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+
+.dashboard-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--clr-blue-blue);
+  font-family: var(--font-family);
+  font-weight: bold;
+}
+
+
+
+
+.dashboard{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  margin-top: auto;
+  margin: 20px;
+}
+
+.dashboard .icon {
+  font-size: 3rem; /* Puedes subirlo a 3rem si quieres más grande */
+  width: 150px;
+  height: 40px;
+  color: var(--clr-marine);
+}
+
+.dashboard-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.card {
+  width: 180px;
+  height: 140px;
+  padding: 1rem;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+
+.card i {
+  font-size: 30px;
+  margin-bottom: 0.5rem;
+}
+
+.card.yellow { background-color: #f1c40f; }
+.card.green  { background-color: #2ecc71; }
+.card.red    { background-color: #e74c3c; }
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.dashboard-admin{
+   display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.dashboard-card{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+.card-agregar {
+  width: 180px;
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-family: var(--font-family);
+  background-color: var(--clr-blue-blue);
+  color: white;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-family: var(--font-family);
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 48px;
+  width: 100%;
+  color: white !important; /* azul primario */
+}
+
+.card-agregar {
+  width: 200px;              
+  height: 150px;             
+  background-color: #64b9cc;
+  color: white;
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin: 10px;            
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 10px;
+  text-align: center;
+}
+
+
+

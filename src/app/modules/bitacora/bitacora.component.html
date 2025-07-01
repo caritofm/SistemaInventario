@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Historial de acciones</h2>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Usuario</th>
+                    <th>Acción</th>
+                    <th>Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of registros">
+                    <td>{{ r.fecha | date:'short' }}</td>
+                    <td>{{ r.usuario }}</td>
+                    <td>{{ r.accion }}</td>
+                    <td>{{ r.detalle }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    /*light theme*/
+    /*gama blue*/
+    --clr-marine:#005187;
+    --clr-blue-pastel:#4d82be;
+    --clr-light-blue:#84b6f4;
+    --clr-light-bluepas:#c4dafa;
+    --clr-white:#fcffff;
+    
+
+    --clr-blue-light:#bee9e8;
+    --clr-blue-blue:#62b6cb;
+    --clr-blue-dark:#1b4965;
+    --clr-white-font:#cae9ff;
+    --clr-blue-white :#5fa8d3;
+
+    --font-family:'Poppins', sans-arial;
+
+}
+
+.estado-proceso{
+    background-color: #cce5ff !important;
+    color: #004085 !important;
+    padding: 4px 10px !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+
+}
+
+body{
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-family: var(--font-family) !important;
+}
+
+
+
+
+
+
+
+

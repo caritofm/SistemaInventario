@@ -1,0 +1,73 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <ul class="nav-menu" id="nav-menu" *ngIf="role === 'admin' || role=== 'gestor'">
+      <li class="nav-item">
+        <a routerLink="/principal" class="nav-link">Inicio</a>
+      </li>
+
+      <li *ngIf="role === 'admin' " class="nav-item dropdown" id="productos-dropdown">
+        <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Bitacora</button>
+        <div class="dropdown-content">
+          <a routerLink="/bitacora">Bitacora de movimientos </a>
+        </div>
+      </li>
+      
+      <li *ngIf="role === 'admin' || role=== 'gestor'" class="nav-item dropdown" id="productos-dropdown">
+        <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Productos</button>
+        <div class="dropdown-content">
+          <a routerLink="/add-product">Agregar producto</a>
+          <a routerLink="/venc-lotes">Vencimineto de productos </a>
+          <a routerLink="/delete-product">Ver productos</a>
+          <a routerLink="/enviar-solicitud-materiales">Solicitud Materiales</a>
+          <a routerLink="/movimientos-materiales">Agregar movimientos de producto</a>
+          <a routerLink="/ver-movimientos">Ver movimientos de producto</a>
+        </div>
+      </li>
+       <li class="nav-item dropdown" id="productos-dropdown" *ngIf="role === 'admin' || role === 'gestor'">
+        <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Proveedores</button>
+        <div class="dropdown-content">
+          <a routerLink="/provedores">Ingresar proveedores</a>
+          <a routerLink="/lista-provedores">Todos proveedores</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" id="productos-dropdown" *ngIf="role === 'admin' || role === 'gestor'">
+        <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Ubicaciones</button>
+        <div class="dropdown-content">
+          <a routerLink="/ubicaciones">Planos de ubicacion</a>
+          <a routerLink="/ubicacion-categoria">Ubicaciones y categorias</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" id="productos-dropdown" *ngIf="role === 'admin'">
+        <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Informe</button>
+        <div class="dropdown-content">
+          <a routerLink="/informe">Generar Informe de productos</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" id="productos-dropdown" *ngIf="role === 'admin' || role ==='gestor'">
+        <button class="dropbtn" (click)="toggleDropdown('productos-dropdown')">Compra</button>
+        <div class="dropdown-content">
+          <a routerLink="/carrito">Solicitar Compras</a>
+          <a routerLink="/productos" *ngIf="role === 'admin'">Solicitar de compra </a>
+        </div>
+        
+       
+      </li>
+      <li class="nav-item dropdown">
+        <button class="dropbtn" (click)="logout()">Cerrar Sesión</button>
+      </li>
+
+      <!-- Resto de los menús... -->
+      
+    
+    
+    </ul>
+
+    <div class="hamburger" id="hamburger" (click)="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

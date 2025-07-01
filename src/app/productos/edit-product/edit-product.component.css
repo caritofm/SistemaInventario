@@ -1,0 +1,332 @@
+.container {
+  padding: 40px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #f8fafb;
+  font-family: var(--font-family);
+}
+
+/* Título principal */
+.main-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #74b9d8;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: -0.5px;
+}
+
+.product-card {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.product-card mat-card-header {
+  background: none;
+  color: #74b9d8;
+  padding: 0;
+  margin: 0 0 60px 0;
+}
+
+.product-card mat-card-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #74b9d8;
+  text-align: center;
+  letter-spacing: -0.5px;
+  justify-content: center;
+}
+
+.product-card mat-card-title mat-icon {
+  display: none;
+}
+
+.product-card mat-card-subtitle {
+  display: none;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Campo de input personalizado */
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.input-label {
+  font-size: 1.2rem;
+  color: #74b9d8;
+  font-weight: 400;
+  min-width: 120px;
+  text-align: left;
+}
+
+.input-field {
+  flex: 1;
+  position: relative;
+}
+
+.custom-input {
+  width: 300px;
+  padding: 8px 16px;
+  border: 2px solid #e1f0f7;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  background: white;
+  outline: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  color: #333;
+  font-weight: 500;
+  height: 40px;
+}
+
+.custom-input:focus {
+  border-color: #74b9d8;
+  box-shadow: 0 0 0 3px rgba(116, 185, 216, 0.1);
+}
+
+.custom-input:hover {
+  border-color: #74b9d8;
+}
+
+.custom-input[readonly] {
+  background: #f8fafb;
+  color: #666;
+}
+
+.edit-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #74b9d8;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+/* Select personalizado */
+.custom-select {
+  width: 330px;
+  padding: 8px 16px;
+  border: 2px solid #e1f0f7;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  background: white;
+  outline: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  color: #333;
+  font-weight: 500;
+  appearance: none;
+  cursor: pointer;
+  height: 50px;
+}
+
+.custom-select:focus {
+  border-color: #74b9d8;
+  box-shadow: 0 0 0 3px rgba(116, 185, 216, 0.1);
+}
+
+.custom-select:hover {
+  border-color: #74b9d8;
+}
+
+/* Imagen del producto */
+.imagen-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.imagen-label {
+  font-size: 1.2rem;
+  color: #74b9d8;
+  font-weight: 400;
+  min-width: 120px;
+}
+
+.image-container {
+  width: 200px;
+  height: 100px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 2px solid #e1f0f7;
+  border-radius: 25px;
+  background: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-image {
+  width: auto;
+  height: 40px;
+  max-width: calc(300px - 32px);
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+  transform: scale(1.05);
+}
+
+/* Botón principal */
+.save-button {
+  background: #74b9d8;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 30px auto 0 auto;
+  display: block;
+  min-width: 200px;
+  box-shadow: 0 4px 15px rgba(116, 185, 216, 0.3);
+}
+
+.save-button:hover:not(:disabled) {
+  background: #5da3c7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(116, 185, 216, 0.4);
+}
+
+.save-button:disabled {
+  background: #bdc3c7;
+  color: #7f8c8d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.cancel-button {
+  display: none; /* Ocultar el botón cancelar para mantener el diseño simple */
+}
+
+/* Preview de categoría */
+.categoria-preview {
+  margin: 15px 0;
+  padding: 0;
+}
+
+.info-card {
+  background: rgba(116, 185, 216, 0.1);
+  border: 1px solid rgba(116, 185, 216, 0.2);
+  border-radius: 15px;
+  box-shadow: none;
+}
+
+.info-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #74b9d8;
+}
+
+/* Loading state */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  color: #74b9d8;
+}
+
+.loading-container mat-spinner {
+  --mdc-circular-progress-active-indicator-color: #74b9d8;
+}
+
+.loading-container p {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #74b9d8;
+}
+
+/* Ocultar elementos de Material Design que no necesitamos */
+.full-width {
+  display: none;
+}
+
+mat-form-field {
+  display: none;
+}
+
+.button-container {
+  display: none;
+}
+
+.image-card {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 15px;
+  }
+  
+  .main-title,
+  .product-card mat-card-title {
+    font-size: 2rem;
+  }
+  
+  .input-group,
+  .imagen-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .input-label,
+  .imagen-label {
+    min-width: auto;
+    font-size: 1.1rem;
+  }
+  
+  .custom-input,
+  .custom-select {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .image-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title,
+  .product-card mat-card-title {
+    font-size: 1.8rem;
+  }
+  
+  .custom-input,
+  .custom-select {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+  
+  .save-button {
+    font-size: 1rem;
+    padding: 12px 30px;
+    min-width: 180px;
+  }
+}

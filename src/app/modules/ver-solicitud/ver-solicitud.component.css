@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333;
+}
+
+.container {
+  width: 95%;
+  max-width: 1100px;
+  margin: 2rem auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--clr-blue-marine);
+  font-family: var(--font-family);
+  font-weight: bold;
+
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+thead {
+  background-color: var(--clr-blue-blue);
+  color: white;
+  font-family: var(--font-family);
+}
+
+th, td {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #e6f7ff;
+  cursor: default;
+}
+
+button {
+  padding: 6px 12px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.sin-datos {
+  text-align: center;
+  color: #666;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+

@@ -15,10 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 // Middleware para servir Angular
 app.use(express.static(path.join(__dirname, '../frontend/dist/frontend')));
 
-// Redirige todo lo demás al index.html (para rutas de Angular)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/frontend/index.html'));
-});
+
 
 // Conexión a MongoDB
 mongoose.connect('mongodb+srv://carolfloresm:0VBajr2eLL8CacgJ@cluster0.hgmgeel.mongodb.net/inventario?retryWrites=true&w=majority&appName=Cluster0',{

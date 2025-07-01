@@ -18,10 +18,7 @@ app.use(express.static(path.join(__dirname, '../frontend/dist/frontend')));
 
 
 // Conexión a MongoDB
-mongoose.connect('mongodb+srv://carolfloresm:0VBajr2eLL8CacgJ@cluster0.hgmgeel.mongodb.net/inventario?retryWrites=true&w=majority&appName=Cluster0',{
-  useNewUrlParser:true,
-  useUnifiedTopology:true
-})
+mongoose.connect('mongodb+srv://carolfloresm:0VBajr2eLL8CacgJ@cluster0.hgmgeel.mongodb.net/inventario?retryWrites=true&w=majority&appName=Cluster0')
   .then(async () => {
     console.log('✅ Conectado a MongoDB Atlas');
 

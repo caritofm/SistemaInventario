@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard" *ngIf="usuarioRol==='admin'">
+            <div class="dashboard-container">
+            <h4 class="dashboard-title">Hola {{usuarioNombre}} Bienvenid{{'@'}}</h4>
+            <div class="dashboard-admin">
+                <mat-card class="card-agregar">
+                    <mat-card-title class="title">Productos stock</mat-card-title>
+                    <mat-card-content class="card-content">
+                        <p>{{totalProductos}}</p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="card-agregar">
+                    <mat-card-title class="title">Entradas producto</mat-card-title>
+                    <mat-card-content class="card-content">
+                        <p>{{entradaTotal}}</p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="card-agregar">
+                    <mat-card-title class="title">Salida producto</mat-card-title>
+                    <mat-card-content class="card-content">
+                        <p>{{totalSalida}}</p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="card-agregar">
+                    <mat-card-title class="title">Solicitud materiales</mat-card-title>
+                    <mat-card-content class="card-content">
+                        <button mat-icon-button style="color: white;"  matTooltip="Solicitud de materiales" routerLink="/add-product">
+                            <p>{{totalPendientes}}</p>
+                        </button>
+                    </mat-card-content>
+                </mat-card>
+
+            </div>
+
+
+                    
+                </div>
+    </div>
+    <div class="dashboard-gestor" *ngIf="usuarioRol === 'gestor'">
+        <h4 class="dashboard-title" >Hola, {{usuarioNombre}} Bienvenid{{'@'}} </h4>
+
+        <div class="dashboard-card">
+            <mat-card class="card-agregar">
+            <mat-card-title class="title">Agregar Producto</mat-card-title>
+            <mat-card-content class="card-content">
+                <button mat-icon-button style="color: white;"  matTooltip="Agregar productos" routerLink="/add-product">
+                    <mat-icon >add</mat-icon>
+                </button>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card-agregar">
+            <mat-card-title class="title">Solicitar compra</mat-card-title>
+            <mat-card-content class="card-content">
+                <button mat-icon-button color="primary" matTooltip="Solicitar compras"  routerLink="/carrito">
+                    <mat-icon style="color: white;" >add_shopping_cart</mat-icon>
+                </button>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card-agregar">
+            <mat-card-title class="title"> Lista Productos</mat-card-title>
+            <mat-card-content class="card-content">
+                <button mat-icon-button color="primary" matTooltip="Lista de productos"  routerLink="/delete-product">
+                    <mat-icon style="color: white;" >list_alt</mat-icon>
+                </button>
+            </mat-card-content>
+        </mat-card>
+       
+
+        </div>
+
+        
+
+    </div>
+
+        <app-notificacion></app-notificacion>
+    
+    </div>
+
+
+</body>
+</html>

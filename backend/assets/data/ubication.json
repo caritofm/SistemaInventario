@@ -1,0 +1,119 @@
+[
+    {
+        "nombreUbicacion":"RACK- A1",
+        "descripcion": "Llaves",
+        "categoria":"683e65f7f48cd3d7cacc6573"
+    },
+    {
+        "nombreUbicacion": "RACK - A2",
+        "descripcion": "Alicates",
+        "categoria":"683e65f7f48cd3d7cacc6573"
+
+    },
+    {
+        "nombreUbicacion": "RACK - A3",
+        "descripcion": "Destornilladores",
+        "categoria":"683e65f7f48cd3d7cacc6573"
+    },
+    {
+        "nombreUbicacion": "RACK - A4",
+        "descripcion": "Martillos",
+        "categoria":"683e65f7f48cd3d7cacc6573"
+    },
+    {
+        "nombreUbicacion": "RACK - A5",
+        "descripcion": "Esmeriles",
+        "categoria":"683e65f7f48cd3d7cacc6576"
+    },
+    {
+        "nombreUbicacion": "RACK - B1",
+        "descripcion": "Taladros",
+        "categoria":"683e65f7f48cd3d7cacc6576" 
+    },
+    {
+        "nombreUbicacion": "RACK - B2",
+        "descripcion": "Amoldadoras",
+        "categoria":"683e65f7f48cd3d7cacc6576"
+    },
+    {
+        "nombreUbicacion": "RACK - B3",
+        "descripcion": "Sierras electricas",
+        "categoria":"683e65f7f48cd3d7cacc6576"
+    },
+    {
+        "nombreUbicacion": "RACK - B4",
+        "descripcion": "Pulidoras",
+        "categoria":"683e65f7f48cd3d7cacc6576"
+    },
+    {
+        "nombreUbicacion": "RACK - C1",
+        "descripcion": "Planchas",
+        "categoria": "683e65f7f48cd3d7cacc6579"
+    },
+    {
+        "nombreUbicacion": "RACK - C2",
+        "descripcion": "Tubos",
+        "categoria": "683e65f7f48cd3d7cacc6579"
+    },
+    {
+        "nombreUbicacion": "RACK - C3",
+        "descripcion": "Tuercas ",
+        "categoria": "683e65f7f48cd3d7cacc657c"
+    },
+    {
+        "nombreUbicacion": "RACK - C4",
+        "descripcion": "Arandela",
+        "categoria": "683e65f7f48cd3d7cacc6579"
+    },
+    {
+        "nombreUbicacion": "RACK - C5",
+        "descripcion": "Lija", 
+        "categoria":"683e65f7f48cd3d7cacc657c"
+    },
+    {
+        "nombreUbicacion": "RACK - D1",
+        "descripcion": "Casco",
+        "categoria": "683e65f7f48cd3d7cacc6585"
+    },
+    {
+        "nombreUbicacion": "RACK - D2",
+        "descripcion": "Lentes",
+        "categoria": "683e65f7f48cd3d7cacc6585"
+    },
+    {
+        "nombreUbicacion": "RACK - D3",
+        "descripcion": "Protectores auditivos",
+        "categoria": "683e65f7f48cd3d7cacc6585"
+    },
+    {
+        "nombreUbicacion": "RACK - D4",
+        "descripcion": "Mascarillas",
+        "categoria": "683e65f7f48cd3d7cacc6585"
+
+    },
+    {
+        "nombreUbicacion": "RACK - D5",
+        "descripcion": "Señales de seguridad",
+        "categoria": "683e65f7f48cd3d7cacc6588"
+    },
+    {
+        "nombreUbicacion": "RACK - D5",
+        "descripcion": "Cintas de advertencia",
+        "categoria": "683e65f7f48cd3d7cacc6588"
+    },
+    {
+        "nombreUbicacion": "RACK - E1",
+        "descripcion": "Aceite hidraulico" ,
+        "categoria":"683e65f7f48cd3d7cacc6582"
+    },
+    {
+        "nombreUbicacion": "RACK - E2",
+        "descripcion": "Trapos industriales",
+        "categoria":"683e65f8f48cd3d7cacc658b"
+    },
+    {
+        "nombreUbicacion": "RACK - E3",
+        "descripcion": "Desengrasantes",
+        "categoria":"683e65f8f48cd3d7cacc658b"
+    }
+]

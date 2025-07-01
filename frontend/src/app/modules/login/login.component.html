@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- login.component.html -->
+<div class="container">
+  <form class="form-container" #form="ngForm" (ngSubmit)="login()">
+    <h1 style="color:var(--clr-marine)">Iniciar Sesión</h1>
+
+    <input
+      type="email"
+      placeholder="Email"
+      name="correoElec"
+      required
+      [(ngModel)]="correo"
+    />
+    
+
+    <input type="password" placeholder="Password" name="password" required [(ngModel)]="password" />
+    
+
+    
+
+    <button type="submit" [disabled]="form.invalid">Sign in</button>
+  </form>
+
+  <div class="info-container">
+    <h1>¡Hola, Colaborador!</h1>
+    <p>Ingresa con tus credenciales personales</p>
+  </div>
+</div>
+        
+</body>
+</html>

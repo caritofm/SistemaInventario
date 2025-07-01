@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Lista de Provedores</h2>
+        <mat-table [dataSource]="dataProovedores"  class="mat-elevation-z8">
+
+        <!-- Razón Social -->
+        <ng-container matColumnDef="Nombre">
+            <mat-header-cell *matHeaderCellDef> Nombre o razon social</mat-header-cell>
+            <mat-cell *matCellDef="let pro">{{pro.nombre}}  </mat-cell>
+        </ng-container>
+
+        <!-- RUT -->
+        <ng-container matColumnDef="Rut">
+            <mat-header-cell *matHeaderCellDef> RUT </mat-header-cell>
+            <mat-cell *matCellDef="let pro">{{pro.rut}} </mat-cell>
+        </ng-container>
+
+
+        <!-- Dirección Legal -->
+        <ng-container matColumnDef="direccion">
+            <mat-header-cell *matHeaderCellDef> Dirección Legal </mat-header-cell>
+            <mat-cell *matCellDef="let pro">{{pro.direccion}}  </mat-cell>
+        </ng-container>
+
+        <!-- Nombre Contacto -->
+        <ng-container matColumnDef="nombreContacto">
+            <mat-header-cell *matHeaderCellDef> Contacto </mat-header-cell>
+            <mat-cell *matCellDef="let pro">{{pro.contacto.nombre}} </mat-cell>
+            
+        </ng-container>
+        <ng-container matColumnDef="Email">
+            <mat-header-cell *matHeaderCellDef> Email de  Contacto </mat-header-cell>
+            <mat-cell *matCellDef="let pro">{{pro.contacto.email}}  </mat-cell>
+        </ng-container>
+
+
+        <!-- Teléfono Contacto -->
+        <ng-container matColumnDef="telefonoContacto">
+            <mat-header-cell *matHeaderCellDef> Teléfono Contacto </mat-header-cell>
+            <mat-cell *matCellDef="let pro">{{pro.contacto.telefono}}  </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="terminosPago">
+            <mat-header-cell *matHeaderCellDef>TerminosPago </mat-header-cell>
+            <mat-cell *matCellDef="let pro">{{ pro.terminosPago ? pro.terminosPago : 'No disponible' }}  </mat-cell>
+        </ng-container>
+
+        <!-- Encabezado y filas -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+
+    </div>
+</body>
+</html>

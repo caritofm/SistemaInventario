@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Proveedores</title>
+</head>
+<body>
+    <form (ngSubmit)="guardarProveedor()" >
+  <div class="container">
+    <h2>Agregar Proveedor</h2>
+
+    <h4>Datos Generales</h4>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Nombre*</label>
+        <input type="text" required [(ngModel)]="proveedor.nombre" name="nombre" placeholder="Ingrese el nombre del proveedor" />
+      </div>
+      <div class="form-group">
+        <label>Rut*</label>
+        <input type="text" required [(ngModel)]="proveedor.rut" name="rut" placeholder="Ingrese el nombre del proveedor" />
+      </div>
+      <div class="form-group">
+        <label>Dirección*</label>
+        <input type="text" required [(ngModel)]="proveedor.direccion" name="direccion" placeholder="Ingrese la dirección legal" />
+      </div>
+    </div>
+
+    <h4>Datos de contacto</h4>
+    <div  class="form-grid">
+      <div class="form-group">
+        <label>Nombre del contacto</label>
+        <input type="text" [(ngModel)]="proveedor.contacto.nombre" name="contactoNombre" placeholder="Ingrese el nombre del contacto" />
+      </div>
+      
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="proveedor.contacto.email" name="contactoEmail" placeholder="Ingrese el email del contacto" />
+      </div>
+      <div class="form-group">
+        <label>Teléfono*</label>
+        <input type="text" [(ngModel)]="proveedor.contacto.telefono" name="contactoTelefono" placeholder="Ingrese el número de teléfono" />
+      </div>
+    </div>
+
+   <div class="form-group">
+    <label>Términos de pago*</label>
+    <select [(ngModel)]="proveedor.terminosPago" name="terminosPago" required>
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option value="Contado">Contado</option>
+        <option value="30 dias a credito">30 días a crédito</option>
+        <option value="Debito">Débito</option>
+    </select>
+</div>
+
+
+    
+
+    <div class="buttons" >
+      <button type="submit" class="btn-guardar">Guardar Proveedor</button>
+    </div>
+  </div>
+</form>
+
+
+</body>
+</html>

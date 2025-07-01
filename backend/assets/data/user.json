@@ -1,0 +1,22 @@
+[
+    {
+      "_id":"665f4ae5829b74d1a84b3c94",
+       "nombre":"Maria",
+       "correoElec":"mariaperez@maestranza.cl",
+       "contraseña": "mestranza123",
+       "rol":"admin",
+       "salario":"$800.000"
+
+    },
+
+    {
+      "_id":"665f4ae9829b74d1a84b3c99",
+       "nombre":"Javier",
+       "correoElec":"javier.lopez@maestranza.cl",
+       "contraseña": "mestranza123",
+       "rol":"gestor",
+       "salario":"$750.000"
+
+    }
+
+]

@@ -1,0 +1,43 @@
+<!-- Muestra alertas del sistema solo si hay -->
+<div *ngIf="alertas.length > 0">
+  <h3>Alertas del Sistema!</h3>
+  <div *ngFor="let alerta of alertas" class="alerta alerta-{{alerta.tipo}}">
+    {{ alerta.mensaje }}
+    <mat-icon>warning</mat-icon>
+  </div>
+</div>
+
+<!-- Muestra notificaciones personales -->
+<div *ngIf="mensajes.length > 0">
+  <h3>Notificaciones Personales</h3>
+  <div *ngFor="let mensaje of mensajes" class="alerta alerta-{{mensaje.tipo}}">
+    {{ mensaje.mensaje }}
+  </div>
+</div>
+
+<div class="bitacora-container" *ngIf=" rolUsuario === 'admin'">
+  <h3 class="titulo">Últimos movimientos (bitácora)</h3>
+
+  <ul *ngIf="bitacoraReciente.length > 0" class="bitacora-lista">
+    <li *ngFor="let b of bitacoraReciente" class="bitacora-item">
+      <div class="bitacora-contenido">
+        <strong>{{ b.usuario?.nombre || 'Sistema' }}:</strong> {{ b.accion }}
+        <br>
+        <small class="fecha">{{ b.fecha | date:'short' }}</small>
+      </div>
+    </li>
+  </ul>
+
+  <p *ngIf="bitacoraReciente.length === 0" class="sin-movimientos">
+    No hay movimientos recientes.
+  </p>
+</div>
+
+
+
+
+
+
+
+
+

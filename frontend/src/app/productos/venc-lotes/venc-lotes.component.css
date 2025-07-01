@@ -1,0 +1,45 @@
+:host ::ng-deep mat-header-cell{
+    background-color: var(--clr-light-bluepas) !important;
+    font-family: var(--font-family);
+}
+
+:host ::ng-deep mat-cell{
+    font-family: var(--font-family) !important;
+}
+
+.container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+h2{
+    font-family: var(--font-family);
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.estado-vencido {
+  color: red;
+  font-weight: bold;
+}
+
+.estado-proximo {
+  color: orange;
+  font-weight: bold;
+}
+
+.estado-activo {
+  color: green;
+  font-weight: bold;
+}
+
+.container {
+  padding: 20px;
+}
+
+mat-table {
+  width: 100%;
+}
+
+

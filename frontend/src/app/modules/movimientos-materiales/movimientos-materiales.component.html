@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Registrar Movimiento</h2>
+
+<!-- Mostrar nombre del usuario -->
+<div class="usuario-info">
+     <p><strong>Usuario:</strong> {{ usuarioNombre}}</p>
+</div>
+
+<form (ngSubmit)="registrarMovimiento()" #form="ngForm">
+  <!-- Producto -->
+  <label>Producto:</label>
+  <select name="Producto_id" [(ngModel)]="nuevoMovimiento.producto_id" required>
+    <option *ngFor="let p of productos" [value]="p._id">{{ p.nombre }}</option>
+  </select>
+
+  <!-- Tipo -->
+  <label>Tipo de Movimiento:</label>
+  <select name="tipo" [(ngModel)]="nuevoMovimiento.tipo" required>
+    <option value="Entrada">Entrada</option>
+    <option value="Salida">Salida</option>
+  </select>
+
+  <!-- Cantidad -->
+  <label>Cantidad:</label>
+  <input
+    type="number"
+    name="cantidad"
+    [(ngModel)]="nuevoMovimiento.cantidad"
+    required
+    min="1"
+  />
+    <!-- usuarioId oculto -->
+  <input type="hidden" name="usuarioId" [(ngModel)]="nuevoMovimiento.usuario_id" />
+  <label>Fecha</label>
+  <input type="date" name="fecha" [(ngModel)]="nuevoMovimiento.fecha" />
+
+  <!-- Motivo -->
+  <label>Motivo:</label>
+  <input type="text" name="motivo" [(ngModel)]="nuevoMovimiento.motivo" />
+
+
+
+  <button type="submit" [disabled]="form.invalid">Registrar Movimiento</button>
+</form>
+
+    
+</body>
+</html>

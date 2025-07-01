@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
@@ -25,3 +26,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+=======
+# clonar el repositorio 
+git clone https://github.com/caritofm/SistemaInventario.git
+
+Comandos de angular 
+cd frontend 
+ng serve --> para correr el programa
+ng generate component modules/componente --> para crera un componente
+
+Comandos para express js 
+cd backend 
+node index.js o nodemon index.js
+
+npm install moongose --> en caso de dar errores en el backend 
+>>>>>>> a060f50f0b09d0d9d976f10bab14b5a6a8f3dfc2

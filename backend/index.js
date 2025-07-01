@@ -14,6 +14,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware para servir Angular
 app.use(express.static(path.join(__dirname, '../frontend/dist/frontend')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/frontend/index.html'));
+});
 
 
 

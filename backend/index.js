@@ -14,9 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware para servir Angular
 app.use(express.static(path.join(__dirname, '../frontend/dist/frontend')));
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/frontend/index.html'));
-});
+
 
 
 
@@ -50,6 +48,9 @@ mongoose.connect('mongodb+srv://carolfloresm:0VBajr2eLL8CacgJ@cluster0.hgmgeel.m
     app.use('/api/bitacora', require('./routes/bitacora'));
     app.use('/api/ordenCompra', require('./routes/compras'));
     app.use('/api/recepcion', require('./routes/recepcionCompra'));
+    app.get('/', (req, res) => {
+      res.sendFile(path.join(__dirname, '../frontend/dist/frontend/index.html'));
+    });
     
 
 
